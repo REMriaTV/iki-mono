@@ -90,3 +90,18 @@ li { margin-bottom: 8px; }
     color: #999;
     background-color: #f9f9f9;
 }
+
+/* 画像の自動調整 */
+.page-content img {
+    max-width: 100%;       /* 横幅いっぱいで止める（はみ出し防止） */
+    height: auto;          /* 比率を崩さない */
+    display: block;        /* ブロック要素にする */
+    margin: 20px auto;     /* 上下に余白を入れ、左右は中央寄せ */
+    border-radius: 4px;    /* 角を少しだけ丸くして上品に */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* うっすら影をつける */
+    
+    /* ↓もし「もっと小さくしたい」場合は、この数字（80%など）を小さくしてください */
+    width: 100%;           
+    max-height: 500px;     /* 高すぎる写真は500pxで止める */
+    object-fit: contain;   /* トリミングせずに全体を見せる */
+}
