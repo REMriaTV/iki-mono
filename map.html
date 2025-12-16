@@ -7,9 +7,82 @@ title: Fieldwork Map
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
-    #map { height: 600px; width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .custom-popup img { width: 100%; height: auto; border-radius: 4px; margin-top: 8px; }
-    .custom-popup h3 { margin: 0; font-size: 16px; color: #00608d; font-family: 'Shippori Mincho', serif; }
+    /* 地図のスタイル */
+    #map { height: 700px; width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    
+    /* ポップアップ全体の幅とフォント */
+    .custom-popup { 
+        width: 280px; /* スマホでも見やすい幅 */
+        font-family: 'Zen Kaku Gothic New', sans-serif; 
+    }
+
+    /* 1. タイトル（キャプション） */
+    .custom-popup h3 { 
+        margin: 0 0 8px 0; 
+        font-size: 16px; 
+        font-weight: bold;
+        color: #00608d; 
+        font-family: 'Shippori Mincho', serif; 
+        border-bottom: 1px solid #ddd; 
+        padding-bottom: 4px;
+    }
+
+    /* 2. 画像ギャラリー（横スライド・スナップ付き） */
+    .popup-gallery {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; /* スクロールした時にピタッと止まる */
+        gap: 0;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        background: #f0f0f0;
+    }
+    
+    .popup-gallery img {
+        width: 100%;       /* 親要素いっぱいに表示 */
+        height: 180px;     /* 高さを固定して揃える */
+        object-fit: cover; /* 比率を維持してトリミング */
+        flex-shrink: 0;    /* 縮まないようにする */
+        scroll-snap-align: center; /* 真ん中で止まる */
+    }
+
+    /* 3. 折りたたみ式のフィールドメモ */
+    details {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #333;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background: #fafafa;
+    }
+    
+    summary {
+        cursor: pointer;
+        padding: 6px 10px;
+        font-weight: bold;
+        color: #555;
+        list-style: none; /* デフォルトの三角を消す（一部ブラウザ用） */
+        outline: none;
+    }
+    
+    /* 開いた時の矢印アニメーション */
+    summary::after {
+        content: "▼"; 
+        font-size: 10px; 
+        float: right; 
+        transition: 0.2s;
+    }
+    details[open] summary::after {
+        transform: rotate(180deg);
+    }
+
+    .memo-content {
+        padding: 8px 10px;
+        border-top: 1px solid #eee;
+        background: #fff;
+    }
+    
+    .memo-content a { color: #00608d; }
 </style>
 
 <h1>Fieldwork Map: 水と歴史の足跡</h1>
@@ -18,44 +91,67 @@ title: Fieldwork Map
 <div id="map"></div>
 
 <script>
-    // 1. 地図の基本設定 (中心地：下鴨神社あたり)
-    var map = L.map('map').setView([35.0392, 135.7730], 15);
+    // 1. 地図の基本設定
+    var map = L.map('map').setView([35.038, 135.773], 16); // 中心位置を少し調整しました
 
-    // 2. 地図のデザイン (OpenStreetMapを使用)
+    // 2. 地図のデザイン (maxZoom: 19 で拡大可能に)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
     }).addTo(map);
 
-    // 3. ピンのデータ (ここに写真と場所を追加していく)
+    // 3. ピンのデータ
     var locations = [
+        // ★ここに追加しました
         {
             name: "下鴨神社・奈良の小川",
             lat: 35.037511, 
             lng: 135.772732,
-            text: "川の流れに反して、発生するアメンボの波紋。",
-            img: "./assets/image/nara-ogawa.png" // 奈良の小川の写真
+            memo: "川の流れに反して、発生するアメンボの波紋。",
+            images: [
+                "./assets/image/nara-ogawa.png"
+            ]
         },
         {
-            name: "鴨川デルタ",
+            name: "鴨川デルタ（飛び石）",
             lat: 35.0298,
             lng: 135.7728,
-            text: "高野川と賀茂川の合流点。ここから水が混ざり合う。",
-            img: "" // 写真がない場合は空でもOK
+            memo: "高野川と賀茂川の合流点。<br>詳しくは<a href='/iki-mono/journeys/fukumoto/' target='_blank'>Fukumoto Labのページ</a>を参照。",
+            images: [
+                "./journeys/fukumoto/delta01.jpg"
+            ]
         }
-        // ★ここにどんどん追記できます
     ];
 
-    // 4. ピンを地図に配置するループ処理
+    // 4. ピン配置プログラム
     locations.forEach(function(loc) {
         var popupContent = '<div class="custom-popup">';
+        
+        // ① タイトル
         popupContent += '<h3>' + loc.name + '</h3>';
-        popupContent += '<p>' + loc.text + '</p>';
-        if(loc.img) {
-            popupContent += '<img src="' + loc.img + '" alt="' + loc.name + '">';
+        
+        // ② 画像ギャラリー（画像がある場合のみ）
+        if(loc.images && loc.images.length > 0) {
+            popupContent += '<div class="popup-gallery">';
+            loc.images.forEach(function(imgSrc) {
+                if(imgSrc) popupContent += '<img src="' + imgSrc + '" alt="' + loc.name + '">';
+            });
+            popupContent += '</div>';
         }
+        
+        // ③ 折りたたみ式メモ（メモがある場合のみ）
+        if(loc.memo) {
+            popupContent += '<details>';
+            popupContent += '<summary>フィールドメモを読む</summary>';
+            popupContent += '<div class="memo-content">' + loc.memo + '</div>';
+            popupContent += '</details>';
+        }
+        
         popupContent += '</div>';
 
         L.marker([loc.lat, loc.lng]).addTo(map)
-            .bindPopup(popupContent);
+            .bindPopup(popupContent, {
+                maxWidth: 300 
+            });
     });
 </script>
