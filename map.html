@@ -1,0 +1,61 @@
+---
+layout: default
+title: Fieldwork Map
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+    #map { height: 600px; width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .custom-popup img { width: 100%; height: auto; border-radius: 4px; margin-top: 8px; }
+    .custom-popup h3 { margin: 0; font-size: 16px; color: #00608d; font-family: 'Shippori Mincho', serif; }
+</style>
+
+<h1>Fieldwork Map: 水と歴史の足跡</h1>
+<p>リサーチで訪れた場所と、そこで記録された視点。</p>
+
+<div id="map"></div>
+
+<script>
+    // 1. 地図の基本設定 (中心地：下鴨神社あたり)
+    var map = L.map('map').setView([35.0392, 135.7730], 15);
+
+    // 2. 地図のデザイン (OpenStreetMapを使用)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // 3. ピンのデータ (ここに写真と場所を追加していく)
+    var locations = [
+        {
+            name: "下鴨神社・糺の森",
+            lat: 35.0392, 
+            lng: 135.7730,
+            text: "川の流れに反して発生するアメンボの波紋。湧き水の静けさ。",
+            img: "./journeys/fukumoto/shimogamo01.jpg" // アップした写真のパス
+        },
+        {
+            name: "鴨川デルタ",
+            lat: 35.0298,
+            lng: 135.7728,
+            text: "高野川と賀茂川の合流点。ここから水が混ざり合う。",
+            img: "" // 写真がない場合は空でもOK
+        }
+        // ★ここにどんどん追記できます
+    ];
+
+    // 4. ピンを地図に配置するループ処理
+    locations.forEach(function(loc) {
+        var popupContent = '<div class="custom-popup">';
+        popupContent += '<h3>' + loc.name + '</h3>';
+        popupContent += '<p>' + loc.text + '</p>';
+        if(loc.img) {
+            popupContent += '<img src="' + loc.img + '" alt="' + loc.name + '">';
+        }
+        popupContent += '</div>';
+
+        L.marker([loc.lat, loc.lng]).addTo(map)
+            .bindPopup(popupContent);
+    });
+</script>
