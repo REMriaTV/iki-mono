@@ -37,16 +37,16 @@ title: Fieldwork Map
         
         z-index: 2000;
         
-        /* ★デザイン：極限まで透けさせる + 強いぼかし */
-        background: rgba(0, 0, 0, 0.5);       /* 黒を30%まで薄く */
-        backdrop-filter: blur(10px);          /* すりガラス効果を強く */
+        /* ★デザイン：黒を50%まで薄く + 強いぼかし */
+        background: rgba(0, 0, 0, 0.5);       
+        backdrop-filter: blur(10px);          
         -webkit-backdrop-filter: blur(20px);
         
         color: #fff;
         padding: 20px;
-        border-radius: 16px;                  /* 角をもっと丸く */
+        border-radius: 16px;                  
         border: 1px solid rgba(255, 255, 255, 0.15); /* 極細の白い枠 */
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* 影はやわらかく広げる */
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); 
         
         overflow-y: auto;
         display: none;
@@ -60,14 +60,14 @@ title: Fieldwork Map
         transform: translate(-50%, -50%) scale(1); /* フワッと元のサイズへ */
     }
 
-    /* テキストデザイン：細く、美しく */
+    /* テキストデザイン */
     #field-memo-content {
         font-size: 13px;
         line-height: 1.8;
         font-family: 'Zen Kaku Gothic New', sans-serif;
         font-weight: 400;
         letter-spacing: 0.05em;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* 文字を読みやすくする影 */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
     
     #field-memo-content b { 
@@ -128,7 +128,7 @@ title: Fieldwork Map
         scroll-snap-align: center;
     }
 
-    /* ボタンデザイン：細い線でスタイリッシュに */
+    /* ボタンデザイン */
     .show-memo-btn {
         display: block;
         width: 100%;
@@ -167,7 +167,7 @@ title: Fieldwork Map
 </div>
 
 <script>
-    // 1. 地図設定
+    // 1. 地図設定 (中心を下鴨神社付近に)
     var map = L.map('map').setView([35.038, 135.773], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
@@ -183,25 +183,26 @@ title: Fieldwork Map
             memo: "<b>【観察記録】</b><br>川の流れに反して、発生するアメンボの波紋。<br>目を凝らさないと見えない水面のアーティストの動きに気づけるか",
             images: ["./assets/image/nara-ogawa.png"]
         },
+        // ★ここから下、カンマ(,)を追加し、位置を少し修正しました
         {
             name: "下鴨神社・御手洗川",
-            lat: 35.0298,
-            lng: 135.7728,
+            lat: 35.0392,  // 修正: デルタから神社内に移動
+            lng: 135.7730,
             memo: "<b>【観察記録】</b><br>輪橋のところ。",
             images: ["./assets/image/mitarashi-gawa.png"]
-        }
-                {
+        }, // ← ★ここのカンマが抜けていました！
+        {
             name: "下鴨神社・御手洗池",
-            lat: 35.0298,
-            lng: 135.7728,
+            lat: 35.0388,  // 修正: 井上社付近へ
+            lng: 135.7733,
             memo: "<b>【観察記録】</b><br>湧水。足つけ神事などが有名",
             images: ["./assets/image/mitarashi-ike.png"]
-        }
-            {
+        }, // ← ★ここのカンマが抜けていました！
+        {
             name: "下鴨神社・泉川",
-            lat: 35.0298,
+            lat: 35.0385,  // 修正: 糺の森方面へ
             lng: 135.7728,
-            memo: "<b>【観察記録】</b><br>湧水。足つけ神事などが有名",
+            memo: "<b>【観察記録】</b><br>糺の森を流れる瀬見の小川、泉川。",
             images: ["./assets/image/izumi-gawa.png"]
         }
     ];
@@ -264,5 +265,3 @@ title: Fieldwork Map
         closeMemo();
     });
 </script>
-
-
