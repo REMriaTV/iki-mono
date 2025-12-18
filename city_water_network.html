@@ -1,0 +1,217 @@
+---
+layout: default
+title: Kyoto City Water Network
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+    .network-container {
+        position: relative;
+        width: 100%;
+        height: 85vh;
+        background: #f4f4f4;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    #city-map { width: 100%; height: 100%; }
+
+    /* 凡例（レジェンド） */
+    .legend-panel {
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        font-size: 13px;
+        line-height: 2;
+        max-width: 250px;
+    }
+    .legend-title {
+        font-family: 'Shippori Mincho', serif;
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+    }
+    .legend-item { display: flex; align-items: center; }
+    
+    /* 線の凡例 */
+    .line-box { width: 30px; height: 4px; margin-right: 10px; border-radius: 2px; }
+    .color-natural { background: #00a8cc; } /* 鴨川など */
+    .color-bypass { background: #27ae60; height: 6px; } /* 疏水（バイパス） */
+    
+    /* 点の凡例 */
+    .dot-box { width: 12px; height: 12px; margin-right: 10px; margin-left: 9px; border-radius: 50%; display: inline-block;}
+    .dot-spring { background: #3498db; border: 2px solid #fff; box-shadow: 0 0 4px rgba(0,0,0,0.3); }
+
+    /* 地下水脈エリア */
+    .area-box { width: 30px; height: 15px; margin-right: 10px; background: rgba(0, 168, 204, 0.1); border: 1px dashed #00a8cc; }
+
+    /* ポップアップのスタイル */
+    .water-popup h4 { margin: 0 0 5px 0; color: #00608d; font-family: 'Shippori Mincho', serif; border-bottom: 1px solid #eee; }
+    .water-popup p { margin: 0; font-size: 12px; line-height: 1.5; }
+    .water-tag { display: inline-block; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-top: 5px; color: #555; }
+</style>
+
+<div class="network-container">
+    <div id="city-map"></div>
+    
+    <!-- 凡例 -->
+    <div class="legend-panel">
+        <div class="legend-title">京都市内 水のネットワーク</div>
+        
+        <div class="legend-item">
+            <div class="line-box color-bypass"></div>
+            <span>琵琶湖疏水 (都市のバイパス)</span>
+        </div>
+        <div class="legend-item">
+            <div class="line-box color-natural"></div>
+            <span>自然河川 (鴨川・高野川)</span>
+        </div>
+        <div class="legend-item">
+            <div class="area-box"></div>
+            <span>豊かな地下水脈 (京都水盆)</span>
+        </div>
+        <div class="legend-item">
+            <div class="dot-box dot-spring"></div>
+            <span>名水・仕込み水スポット</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. 地図設定（少し東へ広げて蹴上・山科方面も意識）
+    var map = L.map('city-map', {
+        zoomControl: false
+    }).setView([35.025, 135.775], 13);
+
+    // 国土地理院地図（淡色）
+    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+        attribution: '国土地理院',
+        maxZoom: 18
+    }).addTo(map);
+
+    // ==========================================
+    // 2. 水のネットワーク（ライン）
+    // ==========================================
+
+    // ■ 自然河川（鴨川・高野川）: 水色
+    var riverStyle = { color: '#00a8cc', weight: 4, opacity: 0.6, lineCap: 'round' };
+    
+    var kamoRiver = [[35.06, 135.755], [35.030, 135.772], [35.004, 135.769], [34.960, 135.755]];
+    var takanoRiver = [[35.06, 135.79], [35.030, 135.772]];
+    
+    L.polyline(kamoRiver, riverStyle).addTo(map).bindTooltip("鴨川", {direction: 'left', sticky: true});
+    L.polyline(takanoRiver, riverStyle).addTo(map).bindTooltip("高野川", {direction: 'right', sticky: true});
+
+
+    // ■ 琵琶湖疏水（バイパス）: 濃い緑で「動脈」感を出す
+    var bypassStyle = { color: '#27ae60', weight: 6, opacity: 0.8, lineJoin: 'round' };
+
+    // ① 第1疏水本線（山科〜蹴上〜鴨川合流）
+    // 山科のトンネル出口から蹴上インクライン、そして夷川発電所へ
+    var sosuiMain = [
+        [35.008, 135.805], // 山科方面からのトンネル出口（イメージ）
+        [35.010, 135.795], // 蹴上（浄水場・インクライン）
+        [35.011, 135.788], // 南禅寺船溜り
+        [35.0135, 135.783], // 動物園南
+        [35.0150, 135.772], // 夷川発電所（ここで電気を作る！）
+        [35.0150, 135.7705] // 鴨川へ放流（みそそぎ川）
+    ];
+    L.polyline(sosuiMain, bypassStyle).addTo(map).bindPopup("<b>琵琶湖疏水（第1疏水）</b><br>明治時代に作られた京都のライフライン。<br>水力発電、上水道、灌漑に使われる。");
+
+    // ② 疏水分線（北部へのバイパス）：哲学の道〜松ヶ崎浄水場
+    // これが北部の水道水を支える重要なルート
+    var sosuiNorth = [
+        [35.011, 135.788], // 蹴上で分岐
+        [35.018, 135.793], // 永観堂
+        [35.026, 135.795], // 銀閣寺（哲学の道）
+        [35.035, 135.790], // 北白川
+        [35.045, 135.785], // 高野（松ヶ崎浄水場へ）
+    ];
+    L.polyline(sosuiNorth, { ...bypassStyle, weight: 4, dashArray: '5, 5' }).addTo(map).bindTooltip("疏水分線<br>(哲学の道)", {sticky: true});
+
+
+    // ==========================================
+    // 3. 地下水と仕込み水（エリアとスポット）
+    // ==========================================
+
+    // ■ 地下水脈エリア（京都水盆）のイメージ
+    // 御所〜下鴨〜伏見にかけての巨大な地下水湖
+    L.circle([35.01, 135.76], {
+        color: 'transparent',
+        fillColor: '#00a8cc',
+        fillOpacity: 0.05,
+        radius: 4000
+    }).addTo(map);
+
+    // ■ 名水・仕込み水スポット
+    var springSpots = [
+        { 
+            name: "梨木神社 (染井)", 
+            lat: 35.0245, lng: 135.7705, 
+            type: "名水・神水",
+            desc: "京都三名水の一つ。茶の湯の名水として知られ、現在も多くの人が水を汲みに訪れる。"
+        },
+        { 
+            name: "下御霊神社", 
+            lat: 35.0185, lng: 135.7680, 
+            type: "名水",
+            desc: "境内に湧き出る水。地元の人々に愛される生活の水。"
+        },
+        { 
+            name: "松井酒造 (神蔵)", 
+            lat: 35.0285, lng: 135.7750, 
+            type: "酒の仕込み水",
+            desc: "比叡山の伏流水を地下50mから汲み上げ、酒造りに使用。蔵の中に井戸がある。"
+        },
+        { 
+            name: "錦市場 (錦の水)", 
+            lat: 35.0050, lng: 135.7630, 
+            type: "食の仕込み水",
+            desc: "かつては各店が井戸を持ち、その冷たい地下水が「京の台所」の鮮度と出汁文化を支えた。"
+        },
+        { 
+            name: "亀屋良長 (醒ヶ井)", 
+            lat: 35.0035, lng: 135.7530, 
+            type: "菓子の仕込み水",
+            desc: "店内の井戸から湧く「醒ヶ井（さめがい）」の水を使用。和菓子の命。"
+        },
+        { 
+            name: "蹴上浄水場", 
+            lat: 35.010, lng: 135.795, 
+            type: "水道水",
+            desc: "琵琶湖から来た水を浄化し、京都市内へ送る心臓部。日本初の急速濾過池。"
+        }
+    ];
+
+    // カスタムアイコン（水滴）
+    var dropIcon = L.divIcon({
+        className: 'custom-div-icon',
+        html: "<div style='background-color:#3498db; width:12px; height:12px; border-radius:50%; border:2px solid white; box-shadow:0 0 5px rgba(0,0,0,0.3);'></div>",
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+    });
+
+    springSpots.forEach(function(spot) {
+        var popupContent = "<div class='water-popup'>" +
+                           "<h4>" + spot.name + "</h4>" +
+                           "<p>" + spot.desc + "</p>" +
+                           "<span class='water-tag'>" + spot.type + "</span>" +
+                           "</div>";
+
+        L.marker([spot.lat, spot.lng], {icon: dropIcon}).addTo(map)
+            .bindPopup(popupContent);
+    });
+
+</script>
