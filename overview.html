@@ -11,7 +11,7 @@ title: Kyoto Water System Overview
     .overview-container {
         position: relative;
         width: 100%;
-        height: 85vh; /* 画面の85%を使う */
+        height: 85vh; 
         background: #f4f4f4;
         border-radius: 8px;
         overflow: hidden;
@@ -44,7 +44,7 @@ title: Kyoto Water System Overview
         color: #666;
     }
 
-    /* 地図上のテキストラベル（山やエリア名） */
+    /* 地図上のテキストラベル */
     .map-label {
         font-family: 'Shippori Mincho', serif;
         font-weight: bold;
@@ -92,81 +92,88 @@ title: Kyoto Water System Overview
 </div>
 
 <script>
-    // 1. 地図設定（少しズームを引いて全体を見る）
+    // 1. 地図設定（全体が見えるようにズーム調整）
     var map = L.map('overview-map', {
-        zoomControl: false // コントロールをシンプルに
+        zoomControl: false 
     }).setView([35.03, 135.76], 12);
 
-    // 2. ★国土地理院「淡色地図」を使用
-    // これが「地形」と「水」を一番美しく見せます
+    // 2. 国土地理院「淡色地図」
     L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
         attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
         maxZoom: 18
     }).addTo(map);
 
-    // 3. 水の流れ（ライン描画）
-    // 鴨川のメインライン
-    var kamoRiver = [
-        [35.08, 135.73], // 上流（イメージ）
-        [35.05, 135.75],
-        [35.029, 135.772], // デルタ
-        [35.00, 135.768],  // 四条あたり
-        [34.95, 135.75]    // 伏見方面
+    // 3. 水の流れ（よりリアルな曲線データ）
+    
+    // ■ 賀茂川（西・左側）: 雲ヶ畑方面から
+    var kamoRiverUpper = [
+        [35.12, 135.72], // 雲ヶ畑（もっと北）
+        [35.09, 135.73], // 柊野ダム付近
+        [35.075, 135.74], // 上賀茂神社付近
+        [35.055, 135.755], // 北山大橋
+        [35.045, 135.76],  // 北大路
+        [35.030, 135.772]  // デルタ合流点
     ];
-    // 高野川
+
+    // ■ 高野川（東・右側）: 大原方面から
     var takanoRiver = [
-        [35.08, 135.80], // 大原方面
-        [35.029, 135.772] // デルタ
+        [35.11, 135.82], // 大原・三千院の西側
+        [35.08, 135.80], // 八瀬
+        [35.06, 135.79], // 修学院
+        [35.045, 135.78], // 松ヶ崎
+        [35.030, 135.772] // デルタ合流点
     ];
 
-    // ラインを描画
-    L.polyline(kamoRiver, { color: '#00a8cc', weight: 8, opacity: 0.6, lineCap: 'round' }).addTo(map);
-    L.polyline(takanoRiver, { color: '#00a8cc', weight: 6, opacity: 0.6, lineCap: 'round' }).addTo(map);
+    // ■ 鴨川本流: 合流後、南へ
+    var kamoRiverMain = [
+        [35.030, 135.772], // デルタ
+        [35.016, 135.770], // 丸太町
+        [35.004, 135.769], // 四条
+        [34.985, 135.765], // 七条
+        [34.960, 135.755], // くいな橋
+        [34.930, 135.750]  // 伏見・桂川合流方面
+    ];
+
+    // ラインを描画（滑らかな接続）
+    var riverStyle = { color: '#00a8cc', weight: 6, opacity: 0.7, lineCap: 'round', lineJoin: 'round' };
+    
+    L.polyline(kamoRiverUpper, riverStyle).addTo(map);
+    L.polyline(takanoRiver, riverStyle).addTo(map);
+    L.polyline(kamoRiverMain, { ...riverStyle, weight: 8 }).addTo(map); // 本流は少し太く
 
 
-    // 4. 地図上のラベル配置（divIconを使用）
+    // 4. 地図上のラベル配置
     function addLabel(lat, lng, text, className) {
         var myIcon = L.divIcon({
             className: 'map-label ' + className,
             html: text,
-            iconSize: [100, 20],
-            iconAnchor: [50, 10] // 中央寄せ
+            iconSize: [120, 20],
+            iconAnchor: [60, 10] 
         });
         L.marker([lat, lng], { icon: myIcon }).addTo(map);
     }
 
-    // 山々（水源）
-    addLabel(35.07, 135.73, "【北山エリア】<br>水源の森", "label-large");
-    addLabel(35.06, 135.81, "【比叡山・大原】", "label-large");
-    addLabel(35.00, 135.80, "【東山連峰】", "");
-    addLabel(35.00, 135.68, "【西山連峰】", "");
+    // 山々（水源エリアを北へ修正）
+    addLabel(35.125, 135.72, "【雲ヶ畑・桟敷ヶ岳】<br>賀茂川の水源", "label-large");
+    addLabel(35.115, 135.82, "【大原・途中峠】<br>高野川の水源", "label-large");
+    
+    // 川の名前を明記
+    addLabel(35.06, 135.735, "賀茂川", "label-water");
+    addLabel(35.06, 135.805, "高野川", "label-water");
 
-    // 水のポイント
+    // ポイント
     addLabel(35.033, 135.775, "▼ 鴨川デルタ<br>(合流点)", "label-water");
     addLabel(35.016, 135.765, "▼ 京都御苑<br>(地下水脈)", "label-water");
-    addLabel(34.93, 135.76, "▼ 伏見エリア<br>(湧き水・酒蔵)", "label-water");
+    addLabel(34.94, 135.76, "▼ 伏見エリア", "label-water");
 
-    // 5. 巨大な「盆地」サークル（うっすら表示）
+    // 5. 盆地サークル
     L.circle([35.01, 135.76], {
         color: '#888',
-        fillColor: '#f03',
-        fillOpacity: 0.05,
-        radius: 6000,
+        fillColor: '#00608d', // 水色っぽく変更
+        fillOpacity: 0.03,
+        radius: 7000,
         weight: 1,
         dashArray: '10, 10'
     }).addTo(map);
 
 </script>
-```
-
-### 次にやること
-1.  この `overview.html` を保存して Push してください。
-2.  `_layouts/default.html` のナビゲーションメニュー（`<nav>`）にリンクを追加します。
-
-```html
-<nav>
-    <a href="/iki-mono/overview.html">Overview</a> <!-- これを追加 -->
-    <a href="/iki-mono/map.html">Detail Map</a>
-    <a href="/iki-mono/journeys/fukumoto/">Fukumoto Lab</a>
-    <a href="/iki-mono/journeys/nakahigashi/">Nakahigashi Lab</a>
-</nav>
