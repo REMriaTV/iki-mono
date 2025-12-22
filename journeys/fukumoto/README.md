@@ -1,37 +1,269 @@
-Fukumoto Lab: 探究と教育の旅
-テーマ：水は誰のもの？見えない水をさがせ！
-概要
-「水」と「鴨川」をテーマとしたラーニング・ジャーニー。 参加者が生物多様性の重要性を五感で体感し、その保全への行動へとつながるプログラムを設計・試行します。
-参加者構成 (想定)
-	•	計16名程度（参加者9名＋ライター5名、スタッフ）
-	•	親子連れ（あかりちゃん小4・小1、松田さん親子など）
-	•	探究系の先生 (2-3名)
-	•	生物好きの方々
-タイムライン & ルート
-(09:00 - 16:00 / 親子連れは16:30頃まで)
-	•	事前学習: 京都市立図書館を活用
-	•	08:00: 集合・観察（賀茂川の大気の流れを見る）
-	•	08:35: 下鴨神社・御手洗池（45分）
-	•	神と水と人の暮らし、水とわたしたちのつながり
-	•	09:30: 堤浅吉漆店（60分）
-	•	11:30: 京料理 二傳（90分）
-	•	13:15: 弘道館 到着
-	•	13:20: 探索（庭と室内）
-	•	14:00: 浜崎さんお話（見えてる部分と見えてない部分、表と裏）
-	•	15:00: ワークショップ開始
-	•	17:00: 終了・撤収
-Research Log (活動記録)
-2025-12-15: 下鴨神社リサーチ
-川の流れに反して、発生するアメンボの波紋
-	•	視点: 水の湧き出し口、植生、歴史的背景の確認。
-2025-12-18: 京料理 二傳リサーチ
-詳細なヒアリング内容は以下のレポートにまとめています。 👉 Research Log: 京料理 二傳 (Niden) を読む
-	•	キーワード: 失われた川（小川・堀川）、井戸水、京料理のオーダーメイド性、2km圏内の生態系。
-2025-12-21: 弘道館リサーチ
-👉 Research Log: 弘道館 (Kodokan) を読む
-	•	視点: 四季折々を庭や料理に取り入れる。鴨川との距離感。
-探究の視点メモ
-	•	魚の文化: 海魚と川魚。佃煮を売ってる店は川魚が多い。
-	•	日本料理の発展: 比叡山・鴨川の風土とお茶の文化の間でどう発展してきたか。
-	•	生物多様性: 京料理と鴨川、お茶との結びつき。
-	•	水運: 山の幸を運ぶ流域（鴨川）と、出汁を引く軟水（地下水）。
+---
+layout: default
+title: Fukumoto Lab: 探究と教育の旅
+---
+
+<style>
+    /* 共通スタイル（他のレポートページとトーンを合わせる） */
+    .lab-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        color: #333;
+        line-height: 1.8;
+    }
+
+    .lab-header {
+        text-align: center;
+        margin-bottom: 50px;
+        border-bottom: 2px solid #00608d;
+        padding-bottom: 30px;
+    }
+    .lab-title {
+        font-family: 'Shippori Mincho', serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #00608d;
+        margin: 0 0 10px 0;
+    }
+    .lab-subtitle {
+        font-size: 1.1rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* セクション */
+    .lab-section {
+        margin-bottom: 60px;
+    }
+    .lab-section h2 {
+        font-size: 1.4rem;
+        font-family: 'Shippori Mincho', serif;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        border-left: 5px solid #00608d;
+        padding-left: 15px;
+        background: #f0f8ff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .lab-section h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin: 25px 0 10px;
+        color: #00608d;
+    }
+
+    /* リスト */
+    .lab-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .lab-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 8px;
+    }
+    .lab-list li::before {
+        content: "・";
+        position: absolute;
+        left: 0;
+        color: #ccc;
+    }
+
+    /* タイムライン */
+    .timeline-list li {
+        margin-bottom: 12px;
+        padding-left: 0;
+        border-left: 2px solid #eee;
+        padding-left: 15px;
+        margin-left: 5px;
+    }
+    .timeline-list li::before { content: none; }
+    .time {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        color: #00608d;
+        margin-right: 10px;
+    }
+
+    /* リサーチログカード */
+    .log-grid {
+        display: grid;
+        gap: 20px;
+    }
+    .log-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        transition: box-shadow 0.2s;
+        text-decoration: none;
+        color: #333;
+        display: block;
+    }
+    .log-card:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: #00608d;
+    }
+    .log-date {
+        font-size: 0.85rem;
+        color: #888;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .log-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #00608d;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .log-desc {
+        font-size: 0.95rem;
+        color: #555;
+    }
+    
+    /* 視点メモ */
+    .perspective-box {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    /* 写真 */
+    .hero-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .img-caption {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #888;
+        margin-top: -20px;
+        margin-bottom: 30px;
+        font-style: italic;
+    }
+</style>
+
+<div class="lab-container">
+
+    <header class="lab-header">
+        <h1 class="lab-title">Fukumoto Lab</h1>
+        <div class="lab-subtitle">探究と教育の旅：水は誰のもの？見えない水をさがせ！</div>
+    </header>
+
+    <div class="lab-section">
+        <h2>概要</h2>
+        <p>「水」と「鴨川」をテーマとしたラーニング・ジャーニー。<br>
+        参加者が生物多様性の重要性を五感で体感し、その保全への行動へとつながるプログラムを設計・試行します。</p>
+        
+        <h3>参加者構成 (想定)</h3>
+        <ul class="lab-list">
+            <li><strong>計16名程度</strong>（参加者9名＋ライター5名、スタッフ）</li>
+            <li>親子連れ（あかりちゃん小4・小1、松田さん親子など）</li>
+            <li>探究系の先生 (2-3名)</li>
+            <li>生物好きの方々</li>
+        </ul>
+    </div>
+
+    <div class="lab-section">
+        <h2>タイムライン & ルート</h2>
+        <p><strong>09:00 - 16:00</strong> (親子連れは16:30頃まで)</p>
+        
+        <h3>当日の詳細スケジュール</h3>
+        <ul class="timeline-list lab-list">
+            <li><span class="time">08:00</span> 集合・観察｜場所未定（25分）・・・賀茂川の大気の流れを見る</li>
+            <li><span class="time">08:25</span> 移動（10分）</li>
+            <li><span class="time">08:35</span> 下鴨神社・御手洗池（45分）<br><small>神と水と人の暮らし、水とわたしたちのつながり</small></li>
+            <li><span class="time">09:20</span> 移動｜荒神口〜堤浅吉漆店（20分）</li>
+            <li><span class="time">09:30</span> <strong>堤浅吉漆店</strong>（60分）</li>
+            <li><span class="time">10:30</span> 移動（20分）｜堤浅吉漆店〜京料理二傳</li>
+            <li><span class="time">11:30</span> <strong>京料理 二傳</strong>（90分）</li>
+            <li><span class="time">13:00</span> 移動｜京料理二傳〜弘道館</li>
+            <li><span class="time">13:15</span> <strong>弘道館</strong> 到着<br>
+                <small>
+                ・13:15 到着、イントロ（5分）<br>
+                ・13:20 探索（40分：庭と室内）<br>
+                ・14:00 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）<br>
+                ・14:30 ふりかえり・休憩（30分）
+                </small>
+            </li>
+            <li><span class="time">15:00</span> ワークショップ開始</li>
+            <li><span class="time">17:00</span> ワークショップ終了・撤収</li>
+        </ul>
+    </div>
+
+    <div class="lab-section">
+        <h2>Research Log (活動記録)</h2>
+        <div class="log-grid">
+            
+            <!-- 堤浅吉漆店 -->
+            <a href="./research_tsutsumi.html" class="log-card">
+                <span class="log-date">2025.12.18 Thu</span>
+                <div class="log-title">🌳 堤浅吉漆店 (Tsutsumi)</div>
+                <div class="log-desc">
+                    15年で200gの命、湿気で乾く不思議。漆と水の循環を学ぶ。<br>
+                    <span style="font-size:0.8rem; color:#888;">#漆 #循環 #湿気</span>
+                </div>
+            </a>
+
+            <!-- 二傳 -->
+            <a href="../nakahigashi/research_niden.html" class="log-card">
+                <span class="log-date">2025.12.18 Thu</span>
+                <div class="log-title">🍱 京料理 二傳 (Niden)</div>
+                <div class="log-desc">
+                    失われた川（小川・堀川）と井戸水。京料理のオーダーメイド性と生態系。<br>
+                    <span style="font-size:0.8rem; color:#888;">#京料理 #井戸水 #歴史</span>
+                </div>
+            </a>
+
+            <!-- 弘道館 -->
+            <a href="./kodokan.html" class="log-card">
+                <span class="log-date">2025.12.21 Sat (Scheduled)</span>
+                <div class="log-title">🍵 弘道館 (Kodokan)</div>
+                <div class="log-desc">
+                    四季折々を庭や料理に取り入れる。鴨川との距離感とお茶の文化。<br>
+                    <span style="font-size:0.8rem; color:#888;">#茶の湯 #庭園 #四季</span>
+                </div>
+            </a>
+
+            <!-- 下鴨神社 -->
+            <div class="log-card" style="border-left: 4px solid #ccc; cursor: default;">
+                <span class="log-date">2025.12.15 Mon</span>
+                <div class="log-title">⛩️ 下鴨神社リサーチ</div>
+                <div class="log-desc">
+                    <img src="./shimogamo01.jpg" alt="下鴨神社" style="width:100%; height:120px; object-fit:cover; border-radius:4px; margin-top:10px;">
+                    <div style="margin-top:5px; font-size:0.9rem;">
+                        川の流れに反して発生するアメンボの波紋。<br>
+                        視点: 水の湧き出し口、植生、歴史的背景。
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2>探究の視点メモ</h2>
+        <div class="perspective-box">
+            <ul class="lab-list">
+                <li><strong>魚の文化:</strong> 海魚と川魚。佃煮を売ってる店は川魚が多い。</li>
+                <li><strong>日本料理の発展:</strong> 比叡山・鴨川の風土とお茶の文化の間でどう発展してきたか。</li>
+                <li><strong>生物多様性:</strong> 京料理と鴨川、お茶との結びつき。</li>
+                <li><strong>水運:</strong> 山の幸を運ぶ流域（鴨川）と、出汁を引く軟水（地下水）。</li>
+                <li><strong>仕出分野と茶懐石の文化</strong></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
