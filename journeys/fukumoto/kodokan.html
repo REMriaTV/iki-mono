@@ -21,7 +21,7 @@ title: Research Log: 二傳 (Niden)
         padding-bottom: 20px;
     }
     .note-meta {
-        font-family: 'Courier New', monospace; /* タイプライター風 */
+        font-family: 'Courier New', monospace;
         font-size: 0.9rem;
         color: #666;
         margin-bottom: 5px;
@@ -34,7 +34,7 @@ title: Research Log: 二傳 (Niden)
         letter-spacing: 0.05em;
     }
 
-    /* セクション（見出しと本文） */
+    /* セクション */
     .note-section {
         margin-bottom: 50px;
     }
@@ -48,7 +48,7 @@ title: Research Log: 二傳 (Niden)
         line-height: 1;
     }
 
-    /* 箇条書きリスト（メモ用） */
+    /* 箇条書きリスト */
     .note-list {
         list-style: none;
         padding: 0;
@@ -65,7 +65,24 @@ title: Research Log: 二傳 (Niden)
         left: 0;
         color: #999;
     }
-    /* 強調したいメモ */
+    
+    /* タイムライン用のスタイル調整 */
+    .timeline-list li {
+        margin-bottom: 8px;
+        padding-left: 0;
+    }
+    .timeline-list li::before {
+        content: ""; /* ・を消す */
+    }
+    .time-slot {
+        display: inline-block;
+        width: 110px;
+        font-weight: bold;
+        color: #555;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* 強調ハイライト */
     .highlight {
         background: linear-gradient(transparent 60%, #e0f7fa 60%);
         font-weight: 500;
@@ -97,6 +114,13 @@ title: Research Log: 二傳 (Niden)
         padding: 4px 8px;
     }
 
+    /* リンク */
+    .note-link {
+        color: #00608d;
+        text-decoration: underline;
+        word-break: break-all;
+    }
+
     /* 戻るボタン */
     .back-nav {
         margin-top: 60px;
@@ -118,8 +142,6 @@ title: Research Log: 二傳 (Niden)
         <h1 class="note-title">Field Research Log</h1>
     </div>
 
-    <!-- ここから自由にメモを追加 -->
-
     <div class="note-section">
         <h2>基本情報・コンテキスト</h2>
         <ul class="note-list">
@@ -129,38 +151,44 @@ title: Research Log: 二傳 (Niden)
         </ul>
     </div>
 
-    ## タイムライン & ルート 
-* **09:00 - 16:00** (親子連れは16:30頃まで)
-* **事前学習**: 京都市立図書館を活用
-* **備品**: 換えの靴下（悪天候
+    <div class="note-section">
+        <h2>タイムライン & ルート</h2>
+        <p><strong>全体スケジュール:</strong> 09:00 - 16:00 (親子連れは16:30頃まで)</p>
+        <ul class="note-list">
+            <li>事前学習: 京都市立図書館を活用</li>
+            <li>備品: 換えの靴下（悪天候時）</li>
+        </ul>
 
-* **14:15 - 17:00**: 弘道館 
-* **午後**: ※天候による 
-* **13:15**: 到着、イントロ（5分：テーマを伝える）
-* **13:20**: 探索（40分：庭と室内）
-* **14:00 - 14:30**: 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）
-* **14:30 - 15:00**: ふりかえり・休憩（30分）
-* **15:00 - **: ワークショップ開始
-* **17:00**: ワークショップ終了・撤収
-    
+        <h3 style="font-size:1rem; margin-top:20px; color:#666;">▼ 弘道館プログラム (14:15 - 17:00)</h3>
+        <ul class="timeline-list">
+            <li><span class="time-slot">13:15</span> 到着、イントロ（5分：テーマを伝える）</li>
+            <li><span class="time-slot">13:20</span> 探索（40分：庭と室内）</li>
+            <li><span class="time-slot">14:00</span> 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</li>
+            <li><span class="time-slot">14:30</span> ふりかえり・休憩（30分）</li>
+            <li><span class="time-slot">15:00</span> ワークショップ開始</li>
+            <li><span class="time-slot">17:00</span> ワークショップ終了・撤収</li>
+        </ul>
+    </div>
 
     <div class="note-section">
         <h2>ヒアリング・観察メモ</h2>
-        <p>（ここに箇条書きでメモを追加していく）</p>
         <ul class="note-list">
-            <li>井戸が枯れた話：<span class="highlight">「時々、白いものが出るようになった」</span></li>
-            <li>お茶が養うのは観察眼</li>
-            <li>何をどう年間植えたりしてるのか</li>
-            <li>最後の30分で振り返りをする</li>
-            <li>水にもさまざまある。地下水と水道水の違い。切り口によって、見方が変わる。知ってるはずのものと出会いなおす。みたことのある石や木を解説を聴きながら視点を持って歩くうちに、見え方が変わる。</li>
-            <li>自然を取り込んできた京都の暮らし。日々愛でる、庭の中に知恵として入っている。維持する技もある。感性。何に心を動かされ何を大事に思い、何を残そうとしてきたのか</li>
-            <li>秋田県立大の地衣類の専門家の視点。お掃除をしながら、発見していく。宝物探しのように庭を歩く。</li>
-            <li>「お茶の庭の作り方」・・・太田さんが説明されたほうが深めやすい。相手に合わせてお話しされるスタイル</li>
-            <li>櫻井さんのアイデア。スマホを子供達が持って、庭の発見を写真を撮っていく。訪れた人が何をこの庭を歩いて感じ取っていくのか</li>
-            <li>相手に合わせて完全にあつらえる。</li>
-            <li>京都の文化を生物多様性として捉えたときに、暮らしの中に使われているいろんな植物。お茶でくくるとハイコンテンツになる。家の中にある「水を含む器」や「水を含む植物」を発見してきてもらう。庭にある「いきもの」がいかにして暮らしの中に取り込まれてきたのか？をさぐる</li>
-            <li>https://youtu.be/uklzBqR_oIU</li>
-            <li>
+            <li>井戸が枯れた話：<span class="highlight">「時々、白いものが出るようになった」</span>（水質の変化や地下水脈の影響について）</li>
+            <li>お茶が養うのは「観察眼」。</li>
+            <li>年間を通して何をどう植えたり管理しているのか？（維持する技と知恵）</li>
+            <li>最後の30分で振り返りをする重要性。</li>
+            <li>水にも様々ある。「地下水」と「水道水」の違い。切り口によって見方が変わる。</li>
+            <li>知ってるはずのものと出会いなおす体験。見たことのある石や木も、解説を聴きながら視点を持って歩くうちに見え方が変わる。</li>
+            <li>自然を取り込んできた京都の暮らし。日々愛でる庭の中に知恵が入っている。</li>
+            <li>感性の継承。「何に心を動かされ、何を大事に思い、何を残そうとしてきたのか」。</li>
+            <li>秋田県立大の地衣類専門家の視点：お掃除をしながら発見していく。宝物探しのように庭を歩くアプローチ。</li>
+            <li>「お茶の庭の作り方」については太田さんが説明されたほうが深めやすい（相手に合わせてお話しされるスタイル）。</li>
+            <li>櫻井さんのアイデア：スマホを子供達が持ち、庭での発見を写真に撮っていく。「訪れた人が何をこの庭で感じ取っていくのか」を可視化する。</li>
+            <li>相手に合わせて完全にあつらえる（おもてなしの心）。</li>
+            <li>京都の文化を生物多様性として捉える。暮らしの中に使われている色々な植物。</li>
+            <li>お茶でくくるとハイコンテンツになるので、家の中にある「水を含む器」や「水を含む植物」を発見してきてもらうなど、入り口を工夫する。</li>
+            <li>庭にある「いきもの」がいかにして暮らしの中に取り込まれてきたのか？を探る。</li>
+            <li>参考動画: <a href="https://youtu.be/uklzBqR_oIU" target="_blank" class="note-link">https://youtu.be/uklzBqR_oIU</a></li>
         </ul>
     </div>
 
@@ -197,4 +225,5 @@ title: Research Log: 二傳 (Niden)
     </div>
 
 </div>
+
 
