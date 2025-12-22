@@ -1,230 +1,37 @@
----
-layout: default
-title: Research Log: 二傳 (Niden)
----
-
-<style>
-    /* ノート風のシンプルなスタイル */
-    .field-note-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        font-family: 'Zen Kaku Gothic New', sans-serif;
-        color: #333;
-        line-height: 1.8;
-    }
-
-    /* タイトル周り */
-    .note-header {
-        margin-bottom: 50px;
-        border-bottom: 2px solid #333;
-        padding-bottom: 20px;
-    }
-    .note-meta {
-        font-family: 'Courier New', monospace;
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 5px;
-    }
-    .note-title {
-        font-family: 'Shippori Mincho', serif;
-        font-size: 2.0rem;
-        font-weight: 700;
-        margin: 0;
-        letter-spacing: 0.05em;
-    }
-
-    /* セクション */
-    .note-section {
-        margin-bottom: 60px;
-    }
-    .note-section h2 {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #00608d;
-        margin-bottom: 20px;
-        border-left: 5px solid #00608d;
-        padding-left: 15px;
-        line-height: 1.2;
-        background: #f9fbfd;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .note-section h3 {
-        font-size: 1.0rem;
-        font-weight: bold;
-        margin: 30px 0 10px;
-        color: #444;
-        border-bottom: 1px dashed #ccc;
-        padding-bottom: 5px;
-    }
-
-    /* 箇条書きリスト */
-    .note-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .note-list li {
-        position: relative;
-        padding-left: 20px;
-        margin-bottom: 12px;
-    }
-    .note-list li::before {
-        content: "・";
-        position: absolute;
-        left: 0;
-        color: #999;
-    }
-    
-    /* 強調ハイライト */
-    .highlight {
-        background: linear-gradient(transparent 60%, #e0f7fa 60%);
-        font-weight: 500;
-    }
-
-    /* 引用・語り */
-    .quote-box {
-        background: #f5f5f5;
-        padding: 15px;
-        border-radius: 4px;
-        margin: 10px 0 20px 20px;
-        font-size: 0.9rem;
-        color: #555;
-        border-left: 3px solid #aaa;
-    }
-
-    /* 写真エリア */
-    .photo-area {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 15px;
-        margin-top: 20px;
-    }
-    .photo-box {
-        background: #f4f4f4;
-        aspect-ratio: 4/3;
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-    }
-    .photo-box img {
-        width: 100%; height: 100%; object-fit: cover;
-    }
-
-    /* 戻るボタン */
-    .back-nav {
-        margin-top: 60px;
-        padding-top: 20px;
-        border-top: 1px solid #eee;
-    }
-    .back-nav a {
-        color: #888;
-        font-size: 0.9rem;
-        text-decoration: none;
-    }
-    .back-nav a:hover { color: #00608d; }
-</style>
-
-<div class="field-note-container">
-
-    <div class="note-header">
-        <div class="note-meta">DATE: 2025-12-18 / LOCATION: 二傳 (Niden)</div>
-        <h1 class="note-title">Field Research Log: 京料理 二傳</h1>
-    </div>
-
-    <div class="note-section">
-        <h2>1. 基本情報・歴史</h2>
-        <ul class="note-list">
-            <li><strong>創業:</strong> 1757年（明和年間・徳川9代将軍の時代）。約250年の歴史。</li>
-            <li><strong>由来:</strong> 創業者の「佐野伝七」が二条城に納めていたことから「二傳」の屋号に。目指してくる客のために屋号が必要だった。</li>
-            <li><strong>かつての姿:</strong> 元は魚屋。そこから「鳥料理」で名を馳せ、現在は多様な京料理・仕出しへ。時代のニーズに合わせて変化してきた（現代でいうコンビニ的な利便性も？）。</li>
-        </ul>
-    </div>
-
-    <div class="note-section">
-        <h2>2. 地図と水脈の記憶</h2>
-        <h3>失われた川と地形</h3>
-        <ul class="note-list">
-            <li><strong>小川通:</strong> 昔は川が流れていた。「小池」という地名あたりは水浸しだった（竹内栖鳳の実家もこのあたり）。</li>
-            <li><strong>堀川:</strong> 昔は材木を運ぶ川だった。堀川三条に材木屋があり、細長い造りになった。</li>
-            <li><strong>西高瀬川:</strong> 嵐山からの水運。千本三条で堀川に移す物流ルートがあった。</li>
-            <li><strong>傾斜:</strong> 運動会で綱引きをすると南が勝つ。京都は北から南へ傾斜しており、見えない「川の道」がある。</li>
-        </ul>
-        <h3>井戸水</h3>
-        <ul class="note-list">
-            <li>店の地下、40〜60mから井戸水を引いている。この辺りの店（錦市場周辺）はみんな井戸を持っている。</li>
-            <li>この20年で水質の変化はあまり感じないが、「水がないと商売にならない」。</li>
-            <li>コントロールできないものへの畏敬：水の神様、便所の神様、三宝さん。</li>
-        </ul>
-    </div>
-
-    <div class="note-section">
-        <h2>3. 食材と水：西と東の違い</h2>
-        <h3>魚の鮮度と文化</h3>
-        <ul class="note-list">
-            <li><strong>「いかりけ」:</strong> 関西で好まれる、死後硬直中の新鮮でイキの良い魚。プリプリ感重視。</li>
-            <li><strong>「かいこう」:</strong> 身が柔らかくなりアミノ酸（旨味）が出てきた状態。関東（江戸前）はこれを好む（熟成魚）。</li>
-            <li>関東は武家社会で「腹を割く」のを嫌う文化なども影響？</li>
-            <li>海魚（かいぎょ）は運ぶ間に腐るため、京都では川魚や干物、塩鯖などの文化が発達した。</li>
-        </ul>
-        <h3>鱧（はも）</h3>
-        <ul class="note-list">
-            <li>生命力が強く、「いかりけ」が長く続く。まな板の上でも噛み付くほど。</li>
-            <li><strong>旬:</strong> 6〜7月（産卵直前）。産卵後は味が落ちるが、9月にまた太る「新鱧（9月）」も美味。</li>
-            <li><strong>出会いの妙:</strong> 鱧と松茸、鱧と梅肉。相性が良くても季節が合わなければ出会えない。旬のタイミングが重要。</li>
-        </ul>
-    </div>
-
-    <div class="note-section">
-        <h2>4. 京料理の哲学：合わせる文化</h2>
-        <h3>「京料理」とは何か</h3>
-        <div class="quote-box">
-            「わざわざ『京』という必要がなかった。西洋料理と区別するために明治期に生まれた言葉。定義は曖昧。」
-        </div>
-        <ul class="note-list">
-            <li><strong>オーダーメイド:</strong> 万人向けの共通規格（ユニバーサル）ではなく、相手に合わせてあつらえる文化。</li>
-            <li><strong>コントロール:</strong> 例えば90歳の老人には、地鶏よりブロイラーの方が柔らかくて良い場合もある。「違いを理解した上で、相手に合わせて食材や調理法をコントロールするのが料理人」。</li>
-            <li><strong>関係性:</strong> 単独では成り立たず、顧客との関係性があって初めて成立する。</li>
-        </ul>
-        <h3>生物多様性と意味性</h3>
-        <ul class="note-list">
-            <li>おせち料理やお弁当の一つ一つに、多様な種（食材）と「意味」が詰まっている。</li>
-            <li><strong>物相（もっそう）:</strong> ご飯を瓢箪や俵型に抜くこと。法事なら菊の形。四季や意味を抽象化して形にする。</li>
-            <li>「エビ＝長寿」「レンコン＝見通しが良い」。価値観を次世代に伝える装置としての食事。</li>
-        </ul>
-    </div>
-
-    <div class="note-section">
-        <h2>5. 商いの記録</h2>
-        <ul class="note-list">
-            <li><strong>商圏:</strong> 1888年頃の「かけ帳」や集金袋が見つかった。徒歩で配達できる範囲（2km圏内）で商売が完結していた。</li>
-            <li><strong>通貨:</strong> 蔵から寛永通宝が発掘された。小判はお釣りが出ないので、庶民の支払いは銭貨だった。</li>
-            <li><strong>分業:</strong> 染め物（小川通）、仕立て（室町通）など、京都は徹底した分業社会。専業化することで「幸せにする人の数」を増やしている。</li>
-            <li><strong>2kmの生態系:</strong> 「風が吹けば桶屋が儲かる」のように、すべてが裏側でつながっているコンパクトな循環。</li>
-        </ul>
-    </div>
-
-    <div class="note-section">
-        <h2>ビジュアル記録</h2>
-        <div class="photo-area">
-            <div class="photo-box">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：外観・暖簾 ]</div>
-            </div>
-            <div class="photo-box">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：井戸・水場 ]</div>
-            </div>
-            <div class="photo-box">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：かけ帳・古銭 ]</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="back-nav">
-        <a href="/iki-mono/journeys/fukumoto/">← Fukumoto Labへ戻る</a> | 
-        <a href="/iki-mono/journeys/nakahigashi/">Nakahigashi Labへ戻る →</a>
-    </div>
-
-</div>
-
-
+Fukumoto Lab: 探究と教育の旅
+テーマ：水は誰のもの？見えない水をさがせ！
+概要
+「水」と「鴨川」をテーマとしたラーニング・ジャーニー。 参加者が生物多様性の重要性を五感で体感し、その保全への行動へとつながるプログラムを設計・試行します。
+参加者構成 (想定)
+	•	計16名程度（参加者9名＋ライター5名、スタッフ）
+	•	親子連れ（あかりちゃん小4・小1、松田さん親子など）
+	•	探究系の先生 (2-3名)
+	•	生物好きの方々
+タイムライン & ルート
+(09:00 - 16:00 / 親子連れは16:30頃まで)
+	•	事前学習: 京都市立図書館を活用
+	•	08:00: 集合・観察（賀茂川の大気の流れを見る）
+	•	08:35: 下鴨神社・御手洗池（45分）
+	•	神と水と人の暮らし、水とわたしたちのつながり
+	•	09:30: 堤浅吉漆店（60分）
+	•	11:30: 京料理 二傳（90分）
+	•	13:15: 弘道館 到着
+	•	13:20: 探索（庭と室内）
+	•	14:00: 浜崎さんお話（見えてる部分と見えてない部分、表と裏）
+	•	15:00: ワークショップ開始
+	•	17:00: 終了・撤収
+Research Log (活動記録)
+2025-12-15: 下鴨神社リサーチ
+川の流れに反して、発生するアメンボの波紋
+	•	視点: 水の湧き出し口、植生、歴史的背景の確認。
+2025-12-18: 京料理 二傳リサーチ
+詳細なヒアリング内容は以下のレポートにまとめています。 👉 Research Log: 京料理 二傳 (Niden) を読む
+	•	キーワード: 失われた川（小川・堀川）、井戸水、京料理のオーダーメイド性、2km圏内の生態系。
+2025-12-21: 弘道館リサーチ
+👉 Research Log: 弘道館 (Kodokan) を読む
+	•	視点: 四季折々を庭や料理に取り入れる。鴨川との距離感。
+探究の視点メモ
+	•	魚の文化: 海魚と川魚。佃煮を売ってる店は川魚が多い。
+	•	日本料理の発展: 比叡山・鴨川の風土とお茶の文化の間でどう発展してきたか。
+	•	生物多様性: 京料理と鴨川、お茶との結びつき。
+	•	水運: 山の幸を運ぶ流域（鴨川）と、出汁を引く軟水（地下水）。
