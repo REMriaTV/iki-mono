@@ -29,7 +29,7 @@ title: Research Log: 弘道館 (Kodokan)
 
     /* ヘッダー */
     .note-header {
-        margin-bottom: 60px;
+        margin-bottom: 40px;
         padding-bottom: 25px;
         border-bottom: 2px solid var(--color-secondary);
     }
@@ -47,6 +47,33 @@ title: Research Log: 弘道館 (Kodokan)
         font-weight: 700;
         margin: 0;
         letter-spacing: 0.05em;
+    }
+
+    /* 参考動画リンク */
+    .video-link-box {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-left: 4px solid #c4302b; /* YouTube red */
+        padding: 15px;
+        margin-bottom: 50px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .video-icon {
+        font-size: 24px;
+        color: #c4302b;
+    }
+    .video-text {
+        font-weight: bold;
+        color: #333;
+    }
+    .video-url {
+        font-size: 0.9rem;
+        color: #00608d;
+        text-decoration: underline;
     }
 
     /* セクション */
@@ -106,21 +133,23 @@ title: Research Log: 弘道館 (Kodokan)
     .timeline-list li {
         position: relative;
         padding-left: 0;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         display: flex;
         align-items: flex-start;
-        line-height: 1.8;
+        line-height: 1.6;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
     }
 
     .time-slot {
         display: inline-block;
-        width: 130px;
+        width: 100px;
         flex-shrink: 0;
         font-weight: bold;
         font-family: var(--font-mono);
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         color: var(--color-secondary);
-        margin-right: 20px;
+        margin-right: 15px;
     }
 
     .timeline-list li > span:not(.time-slot) {
@@ -183,14 +212,15 @@ title: Research Log: 弘道館 (Kodokan)
         color: var(--color-primary);
     }
     
-    /* 運営メモ用（少し目立たなくする） */
+    /* 運営メモ用 */
     .admin-note {
-        font-size: 0.9rem;
-        color: #666;
-        background: #f9f9f9;
-        padding: 15px;
+        font-size: 0.95rem;
+        color: #555;
+        background: #fff3e0; /* 注意喚起色 */
+        padding: 20px;
         border-radius: 4px;
         margin-top: 10px;
+        border-left: 4px solid #ff9800;
     }
 </style>
 
@@ -200,12 +230,34 @@ title: Research Log: 弘道館 (Kodokan)
         <h1 class="note-title">Field Research Log</h1>
     </div>
 
+    <!-- YouTubeリンクを目立つ位置に配置 -->
+    <div class="video-link-box">
+        <div class="video-icon">▶</div>
+        <div>
+            <div class="video-text">参考動画: 京菓子と弘道館</div>
+            <a href="https://youtu.be/uklzBqR_oIU" target="_blank" class="video-url">https://youtu.be/uklzBqR_oIU</a>
+        </div>
+    </div>
+
     <div class="note-section">
         <h2>基本情報・コンテキスト</h2>
         <ul class="note-list">
             <li><strong>対象:</strong> 有斐斎弘道館（ゆうひさいこうどうかん）</li>
             <li><strong>概要:</strong> 江戸中期の儒学者・皆川淇園の学問所跡。数寄屋建築と庭園を有する、京都の文化サロン的場所。</li>
             <li><strong>目的:</strong> 四季折々の庭や料理をどう取り入れるか、鴨川との距離感、生物多様性の視点を探る。</li>
+        </ul>
+    </div>
+
+    <div class="note-section">
+        <h2>タイムライン: 弘道館プログラム</h2>
+        <p style="margin-bottom: 15px; color:#666;"><strong>実施時間:</strong> 14:15 - 17:00 (全体スケジュールの一部)</p>
+        <ul class="timeline-list">
+            <li><span class="time-slot">13:15</span> <span>到着、イントロ（5分：テーマを伝える）</span></li>
+            <li><span class="time-slot">13:20</span> <span>探索（40分：庭と室内）</span></li>
+            <li><span class="time-slot">14:00</span> <span>浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</span></li>
+            <li><span class="time-slot">14:30</span> <span>ふりかえり・休憩（30分）</span></li>
+            <li><span class="time-slot">15:00</span> <span>ワークショップ開始</span></li>
+            <li><span class="time-slot">17:00</span> <span>ワークショップ終了・撤収</span></li>
         </ul>
     </div>
 
@@ -228,10 +280,18 @@ title: Research Log: 弘道館 (Kodokan)
     <div class="note-section">
         <h2>ヒアリング・観察メモ</h2>
         
-        <h3>庭の観察</h3>
+        <h3>庭と植生</h3>
         <ul class="note-list">
             <li>元々は雑木林だった場所。</li>
             <li><span class="highlight">鴨川にある植物</span>が意図的に植えられていたりもする（要確認）。川の植生との連続性。</li>
+            <li>自然を取り込んできた京都の暮らし。日々愛でる庭の中に知恵が入っている。</li>
+            <li>年間を通して何をどう植えたり管理しているのか？（維持する技と知恵）</li>
+        </ul>
+
+        <h3>水と井戸の記憶</h3>
+        <ul class="note-list">
+            <li>井戸が枯れた話：<span class="highlight">「時々、白いものが出るようになった」</span>（水質の変化や地下水脈の影響について）。</li>
+            <li>水にも様々ある。「地下水」と「水道水」の違い。切り口によって見方が変わる。</li>
         </ul>
 
         <h3>建築と空間</h3>
@@ -239,6 +299,22 @@ title: Research Log: 弘道館 (Kodokan)
             <li><strong>家のつくり:</strong> 壁が土や植物などの自然素材でできている。呼吸する建築。</li>
             <li><strong>茶室までの道（動線）:</strong> 客人は庭を通って、茶室へと向かう。そのプロセス（結界としての庭）が重要。</li>
             <li>待合所があり、そこで心を整えてから席に入る。</li>
+        </ul>
+
+        <h3>お茶と観察眼、文化の継承</h3>
+        <ul class="note-list">
+            <li>お茶が養うのは「観察眼」。</li>
+            <li>知ってるはずのものと出会いなおす体験。見たことのある石や木も、解説を聴きながら視点を持って歩くうちに見え方が変わる。</li>
+            <li>感性の継承。「何に心を動かされ、何を大事に思い、何を残そうとしてきたのか」。</li>
+            <li><strong>おもてなしの心:</strong> 相手に合わせて完全にあつらえること。</li>
+            <li>最後の30分で振り返りをする重要性。</li>
+        </ul>
+
+        <h3>生物多様性と文化のつながり</h3>
+        <ul class="note-list">
+            <li>京都の文化を生物多様性として捉える。暮らしの中に使われている色々な植物。</li>
+            <li>お茶でくくるとハイコンテンツになるので、家の中にある「水を含む器」や「水を含む植物」を発見してきてもらうなど、入り口を工夫する。</li>
+            <li>庭にある「いきもの」がいかにして暮らしの中に取り込まれてきたのか？を探る。</li>
         </ul>
     </div>
 
@@ -248,6 +324,7 @@ title: Research Log: 弘道館 (Kodokan)
             <ul class="note-list" style="margin:0;">
                 <li><strong>トイレ事情:</strong> 館内に一つしかない。</li>
                 <li><strong>対策:</strong> 参加者は移動前の「二傳」で済ませてから来るようアナウンスが必要。</li>
+                <li><strong>備品:</strong> 雨天時は<span class="highlight">室内用の換えの靴下</span>が必要（足元が濡れる可能性があるため）。</li>
             </ul>
         </div>
     </div>
