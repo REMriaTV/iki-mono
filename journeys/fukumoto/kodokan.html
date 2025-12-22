@@ -4,30 +4,45 @@ title: Research Log: 二傳 (Niden)
 ---
 
 <style>
-    /* ノート風のシンプルなスタイル */
+    /* 変数定義 */
+    :root {
+        --color-primary: #00608d;
+        --color-secondary: #333;
+        --color-muted: #666;
+        --color-light: #999;
+        --color-bg-light: #f4f4f4;
+        --color-highlight: #e0f7fa;
+        --font-serif: 'Shippori Mincho', serif;
+        --font-sans: 'Zen Kaku Gothic New', sans-serif;
+        --font-mono: 'Courier New', monospace;
+    }
+
+    /* 基本スタイル */
     .field-note-container {
         max-width: 800px;
         margin: 0 auto;
         padding: 40px 20px;
-        font-family: 'Zen Kaku Gothic New', sans-serif;
-        color: #333;
+        font-family: var(--font-sans);
+        color: var(--color-secondary);
         line-height: 1.8;
     }
 
-    /* タイトル周り */
+    /* ヘッダー */
     .note-header {
         margin-bottom: 50px;
-        border-bottom: 2px solid #333;
         padding-bottom: 20px;
+        border-bottom: 2px solid var(--color-secondary);
     }
+
     .note-meta {
-        font-family: 'Courier New', monospace;
+        font-family: var(--font-mono);
         font-size: 0.9rem;
-        color: #666;
+        color: var(--color-muted);
         margin-bottom: 5px;
     }
+
     .note-title {
-        font-family: 'Shippori Mincho', serif;
+        font-family: var(--font-serif);
         font-size: 2.0rem;
         font-weight: 700;
         margin: 0;
@@ -38,53 +53,58 @@ title: Research Log: 二傳 (Niden)
     .note-section {
         margin-bottom: 50px;
     }
+
     .note-section h2 {
         font-size: 1.1rem;
         font-weight: bold;
-        color: #00608d;
+        color: var(--color-primary);
         margin-bottom: 15px;
-        border-left: 4px solid #00608d;
         padding-left: 12px;
+        border-left: 4px solid var(--color-primary);
         line-height: 1;
     }
 
-    /* 箇条書きリスト */
+    /* リスト */
     .note-list {
         list-style: none;
         padding: 0;
         margin: 0;
     }
+
     .note-list li {
         position: relative;
         padding-left: 20px;
         margin-bottom: 12px;
     }
+
     .note-list li::before {
         content: "・";
         position: absolute;
         left: 0;
-        color: #999;
+        color: var(--color-light);
     }
-    
-    /* タイムライン用のスタイル調整 */
+
+    /* タイムラインリスト */
     .timeline-list li {
         margin-bottom: 8px;
         padding-left: 0;
     }
+
     .timeline-list li::before {
-        content: ""; /* ・を消す */
+        content: "";
     }
+
     .time-slot {
         display: inline-block;
         width: 110px;
-        font-weight: bold;
         color: #555;
-        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        font-family: var(--font-mono);
     }
 
-    /* 強調ハイライト */
+    /* ハイライト */
     .highlight {
-        background: linear-gradient(transparent 60%, #e0f7fa 60%);
+        background: linear-gradient(transparent 60%, var(--color-highlight) 60%);
         font-weight: 500;
     }
 
@@ -95,48 +115,70 @@ title: Research Log: 二傳 (Niden)
         gap: 15px;
         margin-top: 20px;
     }
+
     .photo-box {
-        background: #f4f4f4;
+        background: var(--color-bg-light);
         aspect-ratio: 4/3;
         border-radius: 4px;
         overflow: hidden;
         position: relative;
     }
+
     .photo-box img {
-        width: 100%; height: 100%; object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
+
     .photo-label {
         position: absolute;
-        bottom: 0; left: 0; right: 0;
-        background: rgba(0,0,0,0.5);
+        bottom: 0;
+        left: 0;
+        right: 0;
         color: #fff;
         font-size: 0.75rem;
         padding: 4px 8px;
+        background: rgba(0, 0, 0, 0.5);
     }
 
     /* リンク */
     .note-link {
-        color: #00608d;
+        color: var(--color-primary);
         text-decoration: underline;
         word-break: break-all;
     }
 
-    /* 戻るボタン */
+    .note-link:hover {
+        opacity: 0.8;
+    }
+
+    /* 戻るナビゲーション */
     .back-nav {
         margin-top: 60px;
         padding-top: 20px;
         border-top: 1px solid #eee;
     }
+
     .back-nav a {
         color: #888;
         font-size: 0.9rem;
         text-decoration: none;
     }
-    .back-nav a:hover { color: #00608d; }
+
+    .back-nav a:hover {
+        color: var(--color-primary);
+    }
+
+    /* タイムライン見出し */
+    .timeline-heading {
+        font-size: 1rem;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: var(--color-muted);
+    }
 </style>
 
 <div class="field-note-container">
-
     <div class="note-header">
         <div class="note-meta">DATE: 2025-12-18 / LOCATION: 二傳 (Niden)</div>
         <h1 class="note-title">Field Research Log</h1>
@@ -159,8 +201,8 @@ title: Research Log: 二傳 (Niden)
             <li>備品: 換えの靴下（悪天候時）</li>
         </ul>
 
-        <h3 style="font-size:1rem; margin-top:20px; color:#666;">▼ 弘道館プログラム (14:15 - 17:00)</h3>
-        <ul class="timeline-list">
+        <h3 class="timeline-heading">▼ 弘道館プログラム (14:15 - 17:00)</h3>
+        <ul class="note-list timeline-list">
             <li><span class="time-slot">13:15</span> 到着、イントロ（5分：テーマを伝える）</li>
             <li><span class="time-slot">13:20</span> 探索（40分：庭と室内）</li>
             <li><span class="time-slot">14:00</span> 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</li>
@@ -195,18 +237,14 @@ title: Research Log: 二傳 (Niden)
     <div class="note-section">
         <h2>ビジュアル記録</h2>
         <div class="photo-area">
-            <!-- 写真1 -->
             <div class="photo-box">
-                <!-- <img src="画像のパス" alt="写真の説明"> -->
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：外観 ]</div>
+                <div class="photo-placeholder">[ 写真：外観 ]</div>
             </div>
-            <!-- 写真2 -->
             <div class="photo-box">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：料理/道具 ]</div>
+                <div class="photo-placeholder">[ 写真：料理/道具 ]</div>
             </div>
-            <!-- 写真3 -->
             <div class="photo-box">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：水回り ]</div>
+                <div class="photo-placeholder">[ 写真：水回り ]</div>
             </div>
         </div>
     </div>
@@ -223,7 +261,4 @@ title: Research Log: 二傳 (Niden)
     <div class="back-nav">
         <a href="/iki-mono/journeys/nakahigashi/">← Nakahigashi Labへ戻る</a>
     </div>
-
 </div>
-
-
