@@ -1,5 +1,6 @@
+---
 layout: default
-title: Research Log: 二傳 (Niden)
+title: Research Log: 弘道館 (Kodokan)
 ---
 
 <style>
@@ -62,6 +63,15 @@ title: Research Log: 二傳 (Niden)
         border-left: 5px solid var(--color-primary);
         line-height: 1.2;
     }
+    
+    .note-section h3 {
+        font-size: 1.05rem;
+        font-weight: bold;
+        color: var(--color-light);
+        margin: 30px 0 15px;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 5px;
+    }
 
     /* 通常リスト */
     .note-list {
@@ -108,7 +118,7 @@ title: Research Log: 二傳 (Niden)
         flex-shrink: 0;
         font-weight: bold;
         font-family: var(--font-mono);
-        font-size: 1.15rem;        /* 時刻を大きく */
+        font-size: 1.15rem;
         color: var(--color-secondary);
         margin-right: 20px;
     }
@@ -124,17 +134,7 @@ title: Research Log: 二傳 (Niden)
         padding: 0 4px;
     }
 
-    /* タイムライン見出し */
-    .timeline-heading {
-        font-size: 1.15rem;
-        font-weight: bold;
-        margin: 30px 0 20px 0;
-        color: var(--color-primary);
-        padding-left: 8px;
-        border-left: 4px solid var(--color-primary);
-    }
-
-    /* 写真エリア（変更なし） */
+    /* 写真エリア */
     .photo-area {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -148,6 +148,11 @@ title: Research Log: 二傳 (Niden)
         border-radius: 4px;
         overflow: hidden;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 0.8rem;
     }
 
     .photo-box img {
@@ -156,26 +161,9 @@ title: Research Log: 二傳 (Niden)
         object-fit: cover;
     }
 
-    .photo-label {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        color: #fff;
-        font-size: 0.75rem;
-        padding: 4px 8px;
-        background: rgba(0, 0, 0, 0.5);
-    }
-
-    /* リンク */
-    .note-link {
-        color: var(--color-primary);
-        text-decoration: underline;
-        word-break: break-all;
-    }
-
-    .note-link:hover {
-        opacity: 0.8;
+    .photo-placeholder {
+        padding: 10px;
+        text-align: center;
     }
 
     /* 戻るナビゲーション */
@@ -194,89 +182,92 @@ title: Research Log: 二傳 (Niden)
     .back-nav a:hover {
         color: var(--color-primary);
     }
+    
+    /* 運営メモ用（少し目立たなくする） */
+    .admin-note {
+        font-size: 0.9rem;
+        color: #666;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
 </style>
 
 <div class="field-note-container">
     <div class="note-header">
-        <div class="note-meta">DATE: 2025-12-18 / LOCATION: 二傳 (Niden)</div>
+        <div class="note-meta">DATE: 2025-12-21 / LOCATION: 弘道館 (Kodokan)</div>
         <h1 class="note-title">Field Research Log</h1>
     </div>
 
     <div class="note-section">
         <h2>基本情報・コンテキスト</h2>
         <ul class="note-list">
-            <li><strong>対象:</strong> 二傳（京都市中京区）</li>
-            <li><strong>歴史:</strong> 明和年間創業（約250年）。かつては鳥料理、現在は京料理・仕出し。</li>
-            <li><strong>目的:</strong> 長い歴史の中での「水」との関わり、変化、哲学を探る。</li>
+            <li><strong>対象:</strong> 有斐斎弘道館（ゆうひさいこうどうかん）</li>
+            <li><strong>概要:</strong> 江戸中期の儒学者・皆川淇園の学問所跡。数寄屋建築と庭園を有する、京都の文化サロン的場所。</li>
+            <li><strong>目的:</strong> 四季折々の庭や料理をどう取り入れるか、鴨川との距離感、生物多様性の視点を探る。</li>
         </ul>
     </div>
 
     <div class="note-section">
-        <h2>タイムライン & ルート</h2>
-        <p><strong>全体スケジュール:</strong> 09:00 - 16:00 (親子連れは16:30頃まで)</p>
+        <h2>ワークショップ・アイデアメモ</h2>
+        <h3>「箱庭弁当」をつくる</h3>
         <ul class="note-list">
-            <li>事前学習: 京都市立図書館を活用</li>
-            <li>備品: 換えの靴下（悪天候時）</li>
+            <li><span class="highlight">冬の鴨川を「箱庭」的につくる</span>というアイデア。</li>
+            <li>フルランチ（豪華な食事）である必要はない。</li>
+            <li>要素を少しずつ詰めていき、風景を作るような体験。</li>
         </ul>
 
-        <h3 class="timeline-heading">▼ 弘道館プログラム (14:15 - 17:00)</h3>
-        <ul class="timeline-list">
-            <li><span class="time-slot">13:15</span> 到着、イントロ（5分：テーマを伝える）</li>
-            <li><span class="time-slot">13:20</span> 探索（40分：庭と室内）</li>
-            <li><span class="time-slot">14:00</span> 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</li>
-            <li><span class="time-slot">14:30</span> ふりかえり・休憩（30分）</li>
-            <li><span class="time-slot">15:00</span> ワークショップ開始</li>
-            <li><span class="time-slot">17:00</span> ワークショップ終了・撤収</li>
+        <h3>「はっけんする庭」</h3>
+        <ul class="note-list">
+            <li>庭を歩きながら、見えない「つながり」を発見する。</li>
+            <li>そこに込められた「意味」を発見する。</li>
         </ul>
     </div>
 
     <div class="note-section">
         <h2>ヒアリング・観察メモ</h2>
+        
+        <h3>庭の観察</h3>
         <ul class="note-list">
-            <li>井戸が枯れた話：<span class="highlight">「時々、白いものが出るようになった」</span>（水質の変化や地下水脈の影響について）</li>
-            <li>お茶が養うのは「観察眼」。</li>
-            <li>年間を通して何をどう植えたり管理しているのか？（維持する技と知恵）</li>
-            <li>最後の30分で振り返りをする重要性。</li>
-            <li>水にも様々ある。「地下水」と「水道水」の違い。切り口によって見方が変わる。</li>
-            <li>知ってるはずのものと出会いなおす体験。見たことのある石や木も、解説を聴きながら視点を持って歩くうちに見え方が変わる。</li>
-            <li>自然を取り込んできた京都の暮らし。日々愛でる庭の中に知恵が入っている。</li>
-            <li>感性の継承。「何に心を動かされ、何を大事に思い、何を残そうとしてきたのか」。</li>
-            <li>秋田県立大の地衣類専門家の視点：お掃除をしながら発見していく。宝物探しのように庭を歩くアプローチ。</li>
-            <li>「お茶の庭の作り方」については太田さんが説明されたほうが深めやすい（相手に合わせてお話しされるスタイル）。</li>
-            <li>櫻井さんのアイデア：スマホを子供達が持ち、庭での発見を写真に撮っていく。「訪れた人が何をこの庭で感じ取っていくのか」を可視化する。</li>
-            <li>相手に合わせて完全にあつらえる（おもてなしの心）。</li>
-            <li>京都の文化を生物多様性として捉える。暮らしの中に使われている色々な植物。</li>
-            <li>お茶でくくるとハイコンテンツになるので、家の中にある「水を含む器」や「水を含む植物」を発見してきてもらうなど、入り口を工夫する。</li>
-            <li>庭にある「いきもの」がいかにして暮らしの中に取り込まれてきたのか？を探る。</li>
-            <li>参考動画: <a href="https://youtu.be/v68__8Ui9Jo" target="_blank" class="note-link">https://youtu.be/uklzBqR_oIU</a></li>
+            <li>元々は雑木林だった場所。</li>
+            <li><span class="highlight">鴨川にある植物</span>が意図的に植えられていたりもする（要確認）。川の植生との連続性。</li>
         </ul>
+
+        <h3>建築と空間</h3>
+        <ul class="note-list">
+            <li><strong>家のつくり:</strong> 壁が土や植物などの自然素材でできている。呼吸する建築。</li>
+            <li><strong>茶室までの道（動線）:</strong> 客人は庭を通って、茶室へと向かう。そのプロセス（結界としての庭）が重要。</li>
+            <li>待合所があり、そこで心を整えてから席に入る。</li>
+        </ul>
+    </div>
+
+    <div class="note-section">
+        <h2>運営上の確認事項</h2>
+        <div class="admin-note">
+            <ul class="note-list" style="margin:0;">
+                <li><strong>トイレ事情:</strong> 館内に一つしかない。</li>
+                <li><strong>対策:</strong> 参加者は移動前の「二傳」で済ませてから来るようアナウンスが必要。</li>
+            </ul>
+        </div>
     </div>
 
     <div class="note-section">
         <h2>ビジュアル記録</h2>
         <div class="photo-area">
             <div class="photo-box">
-                <div class="photo-placeholder">[ 写真：外観 ]</div>
+                <div class="photo-placeholder">[ 写真：庭の様子 ]</div>
             </div>
             <div class="photo-box">
-                <div class="photo-placeholder">[ 写真：料理/道具 ]</div>
+                <div class="photo-placeholder">[ 写真：茶室・建築 ]</div>
             </div>
             <div class="photo-box">
-                <div class="photo-placeholder">[ 写真：水回り ]</div>
+                <div class="photo-placeholder">[ 写真：土壁の質感 ]</div>
             </div>
         </div>
     </div>
 
-    <div class="note-section">
-        <h2>考察・インサイト</h2>
-        <p>今日のリサーチを通じて見えてきたこと。</p>
-        <ul class="note-list">
-            <li>気づき1...</li>
-            <li>気づき2...</li>
-        </ul>
-    </div>
-
     <div class="back-nav">
-        <a href="/iki-mono/journeys/nakahigashi/">← Nakahigashi Labへ戻る</a>
+        <a href="/iki-mono/journeys/fukumoto/">← Fukumoto Labへ戻る</a>
     </div>
 </div>
