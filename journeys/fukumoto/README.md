@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Fukumoto Lab: 探究と教育の旅
+title: "Fukumoto Lab: 探究と教育の旅"
 ---
 
 <style>
