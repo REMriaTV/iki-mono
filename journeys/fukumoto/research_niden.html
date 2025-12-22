@@ -6,7 +6,7 @@ title: Research Log: 二傳 (Niden)
 <style>
     /* ノート風のシンプルなスタイル */
     .field-note-container {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 40px 20px;
         font-family: 'Zen Kaku Gothic New', sans-serif;
@@ -21,7 +21,7 @@ title: Research Log: 二傳 (Niden)
         padding-bottom: 20px;
     }
     .note-meta {
-        font-family: 'Courier New', monospace; /* タイプライター風 */
+        font-family: 'Courier New', monospace;
         font-size: 0.9rem;
         color: #666;
         margin-bottom: 5px;
@@ -34,21 +34,29 @@ title: Research Log: 二傳 (Niden)
         letter-spacing: 0.05em;
     }
 
-    /* セクション（見出しと本文） */
+    /* セクション */
     .note-section {
         margin-bottom: 50px;
     }
     .note-section h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: bold;
         color: #00608d;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         border-left: 4px solid #00608d;
         padding-left: 12px;
         line-height: 1;
     }
+    .note-section h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin: 25px 0 15px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+    }
 
-    /* 箇条書きリスト（メモ用） */
+    /* 箇条書きリスト */
     .note-list {
         list-style: none;
         padding: 0;
@@ -65,10 +73,22 @@ title: Research Log: 二傳 (Niden)
         left: 0;
         color: #999;
     }
-    /* 強調したいメモ */
+    
+    /* 強調ハイライト */
     .highlight {
         background: linear-gradient(transparent 60%, #e0f7fa 60%);
         font-weight: 500;
+        padding: 0 2px;
+    }
+
+    /* 引用・会話風 */
+    .quote {
+        background: #f8f9fa;
+        border-left: 3px solid #00608d;
+        padding: 15px 20px;
+        margin: 20px 0;
+        font-style: italic;
+        color: #555;
     }
 
     /* 写真エリア */
@@ -97,6 +117,13 @@ title: Research Log: 二傳 (Niden)
         padding: 4px 8px;
     }
 
+    /* リンク */
+    .note-link {
+        color: #00608d;
+        text-decoration: underline;
+        word-break: break-all;
+    }
+
     /* 戻るボタン */
     .back-nav {
         margin-top: 60px;
@@ -114,11 +141,9 @@ title: Research Log: 二傳 (Niden)
 <div class="field-note-container">
 
     <div class="note-header">
-        <div class="note-meta">DATE: 2025-12-18 / LOCATION: 二傳 (Niden)</div>
-        <h1 class="note-title">Field Research Log</h1>
+        <div class="note-meta">DATE: 2025-12-18 / LOCATION: 京料理 二傳 (Niden)</div>
+        <h1 class="note-title">Field Research Log: 京料理 二傳</h1>
     </div>
-
-    <!-- ここから自由にメモを追加 -->
 
     <div class="note-section">
         <h2>基本情報・コンテキスト</h2>
@@ -130,37 +155,229 @@ title: Research Log: 二傳 (Niden)
     </div>
 
     <div class="note-section">
-        <h2>ヒアリング・観察メモ</h2>
-        <p>（ここに箇条書きでメモを追加していく）</p>
+        <h2>訪問ヒアリング・観察メモ</h2>
+        
+        <h3>水と京都の地理・歴史</h3>
         <ul class="note-list">
-            <li>昔の井戸の話：<span class="highlight">「昔はこの辺りも水が豊富で...」</span></li>
-            <li>料理と水：出汁には〇〇の水が合う、という話。</li>
-            <li>変化について：地下鉄工事などで水脈が変わったか？</li>
-            <li>魚でも海魚と川魚に別れる。佃煮を売ってる店は川魚が多い。
-比叡山・鴨川の風土とお茶の文化の間で、日本料理はどう発展してきたか。
-京料理と生物多様性。鴨川との結びつき、お茶との結びつき
-鴨川との距離感。実際の当日ルート。
-四季折々を庭や料理に取り入れる。
-山の幸を運ぶ流域（水運）は鴨川。出汁を引く軟水も鴨川。
-仕出分野と茶懐石の文化
-            </li>
-            <li>（メモを追加...）</li>
+            <li>魚でも海魚と川魚に別れる。佃煮を売ってる店は川魚が多い。</li>
+            <li>比叡山・鴨川の風土とお茶の文化の間で、日本料理はどう発展してきたか。</li>
+            <li>京料理と生物多様性。鴨川との結びつき、お茶との結びつき。</li>
+            <li>鴨川との距離感。実際の当日ルート。</li>
+            <li>四季折々を庭や料理に取り入れる。</li>
+            <li>山の幸を運ぶ流域（水運）は鴨川。出汁を引く軟水も鴨川。</li>
+            <li>仕出分野と茶懐石の文化。</li>
+        </ul>
+        
+        <h3>実現具体性</h3>
+        <ul class="note-list">
+            <li>人数は10名程度。</li>
+            <li>OUTの時間は決まっている。</li>
+            <li>土曜日のお昼時。</li>
+        </ul>
+        
+        <h3>お題（相手）に合わせて作る料理</h3>
+        <ul class="note-list">
+            <li>川魚、山の幸、鴨川そのものの景観（季節性）。</li>
+            <li>目の前のものを大事にしたい。自分の日々体験している世界が愛おしくなるような。</li>
+        </ul>
+        
+        <h3>地図にみる水</h3>
+        <ul class="note-list">
+            <li>水が溢れてた。小川通りに昔、川が流れていた。</li>
+            <li>堀川は昔、川だった。堀川三条に、材木を置くための材木屋があり、細長い造りになった。</li>
+            <li>西高瀬川（嵐山）。と別橋で端に細い川がある。千本三条で堀川に移す。</li>
+            <li>海魚（かいぎょ）は持ってくる間に腐ってしまう。</li>
+            <li>「いかりけ」関東では熟成魚ともいう。締めてから旨みが出る。身のぷりぷり感は失われる。</li>
+            <li>「かいこう」みが柔らかくなるうちにアミノ酸が出てくる。関東ではこの時が食べ頃。</li>
+            <li>関西では「いかりけ」のある、新鮮でイキの良い魚が好まれる。新鮮な魚が貴重だった名残か。</li>
+            <li>たけうちせいほう。小池も水が流れてた。小川の小池あたりに実家があった。水浸し。実家が仕出し屋。</li>
+            <li>伊藤若冲も錦市場の八百屋の息子さん。</li>
+            <li>御池通りが拡張したのは戦争の時で、元は今の半分くらいほどしかなかった。建物はすべて疎開させられた。</li>
+            <li>掘れば井戸水が出てくるし、川から水を引くのも簡単だった。淡水魚は水があれば生きていける。</li>
+            <li>連続性。失われたものがある。</li>
+            <li>「い」市原の山。一族が途絶えたことにより、い山は残らなかった。</li>
+            <li>情報量が多い。</li>
+        </ul>
+        
+        <h3>コントロールできない水</h3>
+        <ul class="note-list">
+            <li>水の神様、便所の神様、三宝さん。</li>
+            <li>水がないと、商売にならない。</li>
+        </ul>
+        
+        <h3>「はも」について</h3>
+        <ul class="note-list">
+            <li>いかりけが長く続く生命力の強い魚。まな板の上でも噛みついてくるほど。</li>
+            <li>産卵直前に餌を食べ込んで肥えて旬となる。産卵期を終えると身が枯れて味が変わる。</li>
+            <li>鱧は8月に産卵を終えた9月にまた太る。旬は６〜7月。9月のを「新鱧」と呼ぶ。</li>
+            <li>痕跡を辿っていくと楽しい。まさに探偵！伝承の背景に面白さがある。</li>
+            <li>探偵ポイントはどこか。「身の回りにある"見えない水"を探してきて」。</li>
+            <li>天保にほって、慶応に印刷した地図。おどいが残っている。江戸をほぼそのまま表している。</li>
+            <li>鴨川が西に蛇行して、京極のあたりを通っていた。</li>
+            <li>三条の〜〜にその痕跡がある。川は上から下へ流れる。</li>
+            <li>運動会で綱引きをすると、南が勝つ。南北に傾斜した京都の地形を表す逸話。</li>
+            <li>街の中の気づかない傾斜がある。見えない川の道。</li>
+        </ul>
+        
+        <h3>鱧と相性の良い食べ物</h3>
+        <ul class="note-list">
+            <li>代表的なのは松茸。梅肉。青梅。</li>
+            <li>相性が良くても、季節が離れてたら出会えない。タイミングは重要。</li>
+            <li>12月はおせち作りをしている。</li>
+            <li>店の地下、40か60メートル地下。この辺の店はみんな井戸水をひいてる。</li>
+        </ul>
+        
+        <h3>水の聞き水</h3>
+        <ul class="note-list">
+            <li>井戸水と水道水。</li>
+            <li>関東は武家で、お腹を割かない。</li>
+            <li>この20年の井戸水の変化はあるか？変わらない。</li>
+            <li>料理人って美味しいものを作るものと思ってない？</li>
+            <li>物には、そもそも、小さな違いがある。</li>
+            <li>その違いを見極めて、使い分けるのが料理人。</li>
+        </ul>
+        
+        <h3>地鶏とブロイラー</h3>
+        <ul class="note-list">
+            <li>90歳の老人に食べてもらうには、ブロイラーの方が柔らかく身になりやすい。</li>
+            <li>相手によって答えが変わる。違いを理解した上で、食材や調理方法をコントロールするのが料理人。</li>
+            <li>ほぼ同じに見える水にすら違いがあるということを理解すると、見え方が変わる。</li>
+            <li>京都市の水道と地下水。</li>
+            <li>同じ道具でも使う人によって結果が違う。</li>
+        </ul>
+        
+        <h3>料理会の生物多様性</h3>
+        <ul class="note-list">
+            <li>多様なものが料理の中に入っている。</li>
+            <li>おせちの中にも、ものすごい数が詰まっている。</li>
+            <li>その季節にしかとれないもの。</li>
+            <li>その季節にないけど、用意できるもの。</li>
+            <li>目の前のお弁当一つの中に、多様性が詰まっている。</li>
+            <li>料理を食べて、その地域の季節、風土を想像することができる。</li>
+            <li>茶菓子のお花に、何を感じて食べるか。</li>
+        </ul>
+        
+        <h3>意味性を想像する力</h3>
+        <ul class="note-list">
+            <li>「物相」と書いて、もっそうと読む。</li>
+            <li>松花堂弁当の中に入れるごはん。瓢箪や俵型に型押しすること。和菓子にも使われる。</li>
+            <li>法事ならお悔やみごとの象徴である菊の形を使う。</li>
+            <li>四季性、意味性を抽象化して使う。</li>
+            <li>海外にはない日本ならではの文化。</li>
+            <li>そういう配慮のない物に触れた時に、逆説的に気づくことになる。</li>
+        </ul>
+        
+        <h3>お茶は観察</h3>
+        <ul class="note-list">
+            <li>四季を観察できるか、人を観察できるか。</li>
+            <li>意味を発見するための観察眼を磨くのがお茶。</li>
+            <li>ちがいに気づく力を育む方法としてのお茶。</li>
+        </ul>
+        
+        <h3>価値観を伝える装置</h3>
+        <ul class="note-list">
+            <li>家族の形も変わってきている。</li>
+            <li>エビは長寿。腰が曲がるまで元気に。</li>
+            <li>まめになるように黒豆。</li>
+            <li>レンコンは見通しがいい。</li>
+            <li>一年の初めに口にする食事。一家の「価値観」を次世代に伝えるための装置だったのでは。</li>
+            <li>ベースに自然がある京都だからこそ、育まれる感性。</li>
+        </ul>
+        
+        <h3>分業が多い京都</h3>
+        <ul class="note-list">
+            <li>着物業界。織物と染め物。</li>
+            <li>染め物は水をたくさん使う。小川通り。</li>
+            <li>仕立てるのは室町通り。</li>
+            <li>絞り染め。白い絹、木綿を紐で括って染めると、括ったところが白く残って模様になる。</li>
+            <li>括り屋さん、整理屋さん...etc。</li>
+            <li>専業化することで、幸せにする人の数を増やしている。</li>
+            <li>地理的な特徴も出てくる。川に近い人が染める、など。</li>
+        </ul>
+        
+        <h3>料理会の分業？</h3>
+        <ul class="note-list">
+            <li>運ぶと鮮度が落ちる。時間が命。</li>
+            <li>1757年創業、徳川９代将軍の時代。</li>
+            <li>堀川丸田町、沢良木町通り。堀川から日赤病院のあたりに、日本で一番古い市場があった。</li>
+            <li>さんたな市場。錦のたな、魚のたな、上のたな（沢良木町）「店」。</li>
+            <li>二条城と御所の間にあり、それぞれに収める店が分かれていた。</li>
+            <li>仕出し屋、お赤飯屋さん、生菓子類、虎屋さん（御所側）。</li>
+        </ul>
+        
+        <h3>にでんの名の由来</h3>
+        <ul class="note-list">
+            <li>目指してくる客のために屋号が必要になる。</li>
+            <li>佐野伝七という人が創業。二条城に納めていた。</li>
+        </ul>
+        
+        <h3>コンパクトな街</h3>
+        <ul class="note-list">
+            <li>1888年。配達の箱をもって、配達していた。</li>
+            <li>かけ帳。</li>
+            <li>屋号入りの集金袋。</li>
+            <li>海魚は各家に持って行って営業する。</li>
+            <li>法衣のおおすみさんに届けていた。</li>
+            <li>クラの中にお皿を包んでいて発掘されたかけ帳。</li>
+            <li>品物を持っていける範囲しか営業しなかった。せいぜい２kmくらいではないかと推測。</li>
+            <li>寛永通貨。蔵の中から発掘。80枚。結構重たい。</li>
+            <li>１枚五十円、4000円くらいの時価だった。</li>
+            <li>時代劇の小判１枚で、40万円くらいの時価。</li>
+            <li>金、銀、銅。金は40万。</li>
+            <li>小判一枚にお釣りが出せないので、基本的に通過を使っていた。</li>
+            <li>両替町通、両替屋さんが多かった。</li>
+            <li>遠方から京に入る旅のものは、小判を持ち歩き、市中で両替した。</li>
+            <li>おどいのあたりには、両替と散髪屋さんが多かった。</li>
+            <li>5万円集金しようとすると、通貨８０枚１串を５串も持たないといけない。</li>
+            <li>結果、集金袋が結構な大きさになった。大根が二本入るくらい。</li>
+        </ul>
+        
+        <h3>はんてん</h3>
+        <ul class="note-list">
+            <li>火事場に配達する時に、着た。</li>
+            <li>それを着ていると、どこかで火事があったことが知れ渡った。</li>
+        </ul>
+        
+        <h3>コンビニエンスなニーズ</h3>
+        <ul class="note-list">
+            <li>現代の感覚でコンビニに近いのではないか。</li>
+            <li>色んなニーズに応えるために、仕事の幅を広げてきた。</li>
+            <li>元は魚屋さんから、多様な料理屋さんに姿を変えてきた。</li>
+        </ul>
+        
+        <h3>京料理とは</h3>
+        <ul class="note-list">
+            <li>言い出したのは明治期から。万博くらいの記録が残っている。</li>
+            <li>わざわざ京という必要がなかった。日本料理という言葉も必要なかった。西洋の料理と区別するために生まれた言葉。</li>
+            <li>京料理に独自性があることを示すために生まれた言葉で、定義は実は曖昧で言葉にしづらい。</li>
+            <li>単独では成り立たず、顧客との関係性あっての京料理。相手を想うことがベースにある。相手によって、コントロールする精神性のこと。</li>
+            <li>万人向け、共通規格、ユニバーサルなものではなく、オーダーメイド。合わせる文化。</li>
+        </ul>
+        
+        <h3>法事会場の遺言</h3>
+        <ul class="note-list">
+            <li>お金と一緒に、二でんさんで法事することを遺していた。</li>
+            <li>地価が上がって、固定資産税が上がった昨今。</li>
+            <li>２キロ圏内で完結する生活文化圏が京都の良さ。</li>
+            <li>すべてのものが裏側でつながっている。</li>
+            <li>風が吹けば桶屋が儲かる。</li>
+        </ul>
+        
+        <h3>作法に込められた想い</h3>
+        <ul class="note-list">
+            <li>外側だけ残り、中身が継承されない。</li>
         </ul>
     </div>
 
     <div class="note-section">
         <h2>ビジュアル記録</h2>
         <div class="photo-area">
-            <!-- 写真1 -->
             <div class="photo-box">
-                <!-- <img src="画像のパス" alt="写真の説明"> -->
                 <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：外観 ]</div>
             </div>
-            <!-- 写真2 -->
             <div class="photo-box">
                 <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：料理/道具 ]</div>
             </div>
-            <!-- 写真3 -->
             <div class="photo-box">
                 <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#aaa; font-size:0.8rem;">[ 写真：水回り ]</div>
             </div>
@@ -177,9 +394,7 @@ title: Research Log: 二傳 (Niden)
     </div>
 
     <div class="back-nav">
-        <a href="/iki-mono/journeys/nakahigashi/">← Nakahigashi Labへ戻る</a>
+        <a href="/iki-mono/journeys/fukumoto/">← Fukumoto Lab メインページへ戻る</a>
     </div>
 
 </div>
-
-
