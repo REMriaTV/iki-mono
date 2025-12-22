@@ -3,13 +3,12 @@ title: Research Log: 二傳 (Niden)
 ---
 
 <style>
-    /* 変数定義（一部変更） */
+    /* 変数定義 */
     :root {
         --color-primary: #00608d;
         --color-secondary: #333;
         --color-muted: #666;
         --color-light: #555;
-        --color-timeline: #00608d;  /* タイムライン専用色 */
         --color-bg-light: #f4f4f4;
         --color-highlight: #e0f7fa;
         --font-serif: 'Shippori Mincho', serif;
@@ -17,7 +16,7 @@ title: Research Log: 二傳 (Niden)
         --font-mono: 'Courier New', monospace;
     }
 
-    /* 基本スタイル（一部調整） */
+    /* 基本スタイル */
     .field-note-container {
         max-width: 860px;
         margin: 0 auto;
@@ -27,7 +26,33 @@ title: Research Log: 二傳 (Niden)
         line-height: 1.9;
     }
 
-    /* セクションタイトルなど（前回と同じ） */
+    /* ヘッダー */
+    .note-header {
+        margin-bottom: 60px;
+        padding-bottom: 25px;
+        border-bottom: 2px solid var(--color-secondary);
+    }
+
+    .note-meta {
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        color: var(--color-muted);
+        margin-bottom: 8px;
+    }
+
+    .note-title {
+        font-family: var(--font-serif);
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+
+    /* セクション */
+    .note-section {
+        margin-bottom: 60px;
+    }
+
     .note-section h2 {
         font-size: 1.25rem;
         font-weight: bold;
@@ -38,13 +63,20 @@ title: Research Log: 二傳 (Niden)
         line-height: 1.2;
     }
 
-    /* 通常の箇条書き（前回と同じ） */
+    /* 通常リスト */
+    .note-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
     .note-list li {
         position: relative;
         padding-left: 28px;
         margin-bottom: 16px;
         line-height: 1.7;
     }
+
     .note-list li::before {
         content: "●";
         position: absolute;
@@ -54,100 +86,130 @@ title: Research Log: 二傳 (Niden)
         top: 0.1em;
     }
 
-    /* タイムライン見出し */
-    .timeline-heading {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 35px 0 25px 0;
-        color: var(--color-primary);
-        padding-left: 14px;
-        border-left: 5px solid var(--color-primary);
-        position: relative;
-    }
-    .timeline-heading::before {
-        content: "▼";
-        margin-right: 8px;
-        font-size: 1.1em;
-    }
-
-    /* タイムラインリスト（大幅改良） */
+    /* タイムライン専用リスト */
     .timeline-list {
         list-style: none;
         padding: 0;
-        margin: 0;
-        position: relative;
-        padding-left: 30px; /* 縦線のためのスペース */
-    }
-
-    /* タイムラインの縦線 */
-    .timeline-list::before {
-        content: "";
-        position: absolute;
-        left: 15px;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background-color: #bbd9e8; /* 淡い青のライン */
-        border-radius: 2px;
+        margin: 20px 0 0 0;
     }
 
     .timeline-list li {
         position: relative;
-        margin-bottom: 28px;
+        padding-left: 0;
+        margin-bottom: 20px;
         display: flex;
         align-items: flex-start;
-        line-height: 1.7;
+        line-height: 1.8;
     }
 
-    /* 時刻部分 */
     .time-slot {
-        flex: 0 0 100px;
-        font-size: 1.3rem;           /* 大きく */
-        font-weight: 700;             /* 太く */
-        color: var(--color-timeline); /* 専用色 */
+        display: inline-block;
+        width: 130px;
+        flex-shrink: 0;
+        font-weight: bold;
         font-family: var(--font-mono);
-        text-align: right;
-        margin-right: 30px;
-        position: relative;
+        font-size: 1.15rem;        /* 時刻を大きく */
+        color: var(--color-secondary);
+        margin-right: 20px;
     }
 
-    /* 時刻のドット（縦線と接続） */
-    .time-slot::after {
-        content: "";
-        position: absolute;
-        right: -45px;
-        top: 10px;
-        width: 12px;
-        height: 12px;
-        background-color: var(--color-primary);
-        border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: 0 0 0 3px #bbd9e8;
-    }
-
-    /* 内容部分 */
-    .timeline-content {
+    .timeline-list li > span:not(.time-slot) {
         flex: 1;
-        padding-top: 4px; /* 時刻の上端と揃える微調整 */
     }
 
-    /* ハイライト（変更なし） */
+    /* ハイライト */
     .highlight {
         background: linear-gradient(transparent 60%, var(--color-highlight) 60%);
         font-weight: 600;
         padding: 0 4px;
     }
 
-    /* その他は前回と同じ */
+    /* タイムライン見出し */
+    .timeline-heading {
+        font-size: 1.15rem;
+        font-weight: bold;
+        margin: 30px 0 20px 0;
+        color: var(--color-primary);
+        padding-left: 8px;
+        border-left: 4px solid var(--color-primary);
+    }
+
+    /* 写真エリア（変更なし） */
+    .photo-area {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .photo-box {
+        background: var(--color-bg-light);
+        aspect-ratio: 4/3;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .photo-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: #fff;
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* リンク */
+    .note-link {
+        color: var(--color-primary);
+        text-decoration: underline;
+        word-break: break-all;
+    }
+
+    .note-link:hover {
+        opacity: 0.8;
+    }
+
+    /* 戻るナビゲーション */
     .back-nav {
         margin-top: 80px;
         padding-top: 25px;
         border-top: 1px solid #eee;
     }
+
+    .back-nav a {
+        color: #888;
+        font-size: 0.95rem;
+        text-decoration: none;
+    }
+
+    .back-nav a:hover {
+        color: var(--color-primary);
+    }
 </style>
 
 <div class="field-note-container">
-    <!-- ヘッダー部分は変更なし -->
+    <div class="note-header">
+        <div class="note-meta">DATE: 2025-12-18 / LOCATION: 二傳 (Niden)</div>
+        <h1 class="note-title">Field Research Log</h1>
+    </div>
+
+    <div class="note-section">
+        <h2>基本情報・コンテキスト</h2>
+        <ul class="note-list">
+            <li><strong>対象:</strong> 二傳（京都市中京区）</li>
+            <li><strong>歴史:</strong> 明和年間創業（約250年）。かつては鳥料理、現在は京料理・仕出し。</li>
+            <li><strong>目的:</strong> 長い歴史の中での「水」との関わり、変化、哲学を探る。</li>
+        </ul>
+    </div>
 
     <div class="note-section">
         <h2>タイムライン & ルート</h2>
@@ -157,34 +219,64 @@ title: Research Log: 二傳 (Niden)
             <li>備品: 換えの靴下（悪天候時）</li>
         </ul>
 
-        <h3 class="timeline-heading">弘道館プログラム (14:15 - 17:00)</h3>
+        <h3 class="timeline-heading">▼ 弘道館プログラム (14:15 - 17:00)</h3>
         <ul class="timeline-list">
-            <li>
-                <div class="time-slot">13:15</div>
-                <div class="timeline-content">到着、イントロ（5分：テーマを伝える）</div>
-            </li>
-            <li>
-                <div class="time-slot">13:20</div>
-                <div class="timeline-content">探索（40分：庭と室内）</div>
-            </li>
-            <li>
-                <div class="time-slot">14:00</div>
-                <div class="timeline-content">浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</div>
-            </li>
-            <li>
-                <div class="time-slot">14:30</div>
-                <div class="timeline-content">ふりかえり・休憩（30分）</div>
-            </li>
-            <li>
-                <div class="time-slot">15:00</div>
-                <div class="timeline-content">ワークショップ開始</div>
-            </li>
-            <li>
-                <div class="time-slot">17:00</div>
-                <div class="timeline-content">ワークショップ終了・撤収</div>
-            </li>
+            <li><span class="time-slot">13:15</span> 到着、イントロ（5分：テーマを伝える）</li>
+            <li><span class="time-slot">13:20</span> 探索（40分：庭と室内）</li>
+            <li><span class="time-slot">14:00</span> 浜崎さんお話（30分：見えてる部分と見えてない部分、表と裏）</li>
+            <li><span class="time-slot">14:30</span> ふりかえり・休憩（30分）</li>
+            <li><span class="time-slot">15:00</span> ワークショップ開始</li>
+            <li><span class="time-slot">17:00</span> ワークショップ終了・撤収</li>
         </ul>
     </div>
 
-    <!-- 他のセクションは変更なし -->
+    <div class="note-section">
+        <h2>ヒアリング・観察メモ</h2>
+        <ul class="note-list">
+            <li>井戸が枯れた話：<span class="highlight">「時々、白いものが出るようになった」</span>（水質の変化や地下水脈の影響について）</li>
+            <li>お茶が養うのは「観察眼」。</li>
+            <li>年間を通して何をどう植えたり管理しているのか？（維持する技と知恵）</li>
+            <li>最後の30分で振り返りをする重要性。</li>
+            <li>水にも様々ある。「地下水」と「水道水」の違い。切り口によって見方が変わる。</li>
+            <li>知ってるはずのものと出会いなおす体験。見たことのある石や木も、解説を聴きながら視点を持って歩くうちに見え方が変わる。</li>
+            <li>自然を取り込んできた京都の暮らし。日々愛でる庭の中に知恵が入っている。</li>
+            <li>感性の継承。「何に心を動かされ、何を大事に思い、何を残そうとしてきたのか」。</li>
+            <li>秋田県立大の地衣類専門家の視点：お掃除をしながら発見していく。宝物探しのように庭を歩くアプローチ。</li>
+            <li>「お茶の庭の作り方」については太田さんが説明されたほうが深めやすい（相手に合わせてお話しされるスタイル）。</li>
+            <li>櫻井さんのアイデア：スマホを子供達が持ち、庭での発見を写真に撮っていく。「訪れた人が何をこの庭で感じ取っていくのか」を可視化する。</li>
+            <li>相手に合わせて完全にあつらえる（おもてなしの心）。</li>
+            <li>京都の文化を生物多様性として捉える。暮らしの中に使われている色々な植物。</li>
+            <li>お茶でくくるとハイコンテンツになるので、家の中にある「水を含む器」や「水を含む植物」を発見してきてもらうなど、入り口を工夫する。</li>
+            <li>庭にある「いきもの」がいかにして暮らしの中に取り込まれてきたのか？を探る。</li>
+            <li>参考動画: <a href="https://youtu.be/v68__8Ui9Jo" target="_blank" class="note-link">https://youtu.be/uklzBqR_oIU</a></li>
+        </ul>
+    </div>
+
+    <div class="note-section">
+        <h2>ビジュアル記録</h2>
+        <div class="photo-area">
+            <div class="photo-box">
+                <div class="photo-placeholder">[ 写真：外観 ]</div>
+            </div>
+            <div class="photo-box">
+                <div class="photo-placeholder">[ 写真：料理/道具 ]</div>
+            </div>
+            <div class="photo-box">
+                <div class="photo-placeholder">[ 写真：水回り ]</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-section">
+        <h2>考察・インサイト</h2>
+        <p>今日のリサーチを通じて見えてきたこと。</p>
+        <ul class="note-list">
+            <li>気づき1...</li>
+            <li>気づき2...</li>
+        </ul>
+    </div>
+
+    <div class="back-nav">
+        <a href="/iki-mono/journeys/nakahigashi/">← Nakahigashi Labへ戻る</a>
+    </div>
 </div>
