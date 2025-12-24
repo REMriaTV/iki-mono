@@ -56,6 +56,32 @@ title: "Fukumoto Lab: 探究と教育の旅"
         color: #00608d;
     }
 
+    /* コンセプトボックス (New!) */
+    .concept-box {
+        background-color: #00608d;
+        color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        font-family: 'Shippori Mincho', serif;
+    }
+    .concept-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+    .concept-text {
+        font-size: 0.95rem;
+        line-height: 2.0;
+    }
+    .concept-text strong {
+        color: #aedefc;
+        font-weight: bold;
+    }
+
     /* リスト */
     .lab-list {
         list-style: none;
@@ -74,7 +100,7 @@ title: "Fukumoto Lab: 探究と教育の旅"
         color: #ccc;
     }
 
-    /* タイムライン概要用のスタイル (New!) */
+    /* タイムライン概要用のスタイル */
     .schedule-summary {
         background-color: #f0f8ff;
         border-left: 5px solid #00608d;
@@ -103,20 +129,62 @@ title: "Fukumoto Lab: 探究と教育の旅"
         font-size: 1.05rem;
     }
 
-    /* タイムライン詳細 */
+    /* タイムライン詳細（アコーディオン） (New!) */
     .timeline-list li {
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         padding-left: 0;
         border-left: 2px solid #eee;
         padding-left: 15px;
         margin-left: 5px;
     }
     .timeline-list li::before { content: none; }
+    
+    details {
+        transition: all 0.3s ease;
+    }
+    summary {
+        cursor: pointer;
+        list-style: none; /* デフォルトの三角を消す */
+        position: relative;
+        padding-right: 20px;
+    }
+    summary::-webkit-details-marker {
+        display: none; /* Chrome用 */
+    }
+    summary:hover .time {
+        text-decoration: underline;
+    }
+    /* 開閉インジケーター */
+    summary::after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #ccc;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+    }
+    details[open] summary::after {
+        transform: rotate(45deg); /* 開いたときに×にする */
+        color: #00608d;
+    }
+
     .time {
         font-family: 'Courier New', monospace;
         font-weight: bold;
         color: #00608d;
         margin-right: 10px;
+    }
+    
+    /* 隠れている詳細部分のスタイル */
+    .timeline-details {
+        margin-top: 10px;
+        padding: 10px 15px;
+        background: #fafafa;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #555;
     }
 
     /* リサーチログカード */
@@ -187,6 +255,22 @@ title: "Fukumoto Lab: 探究と教育の旅"
         </ul>
     </div>
 
+    <div class="concept-box">
+        <div class="concept-title">Core Concept: 内なる水と外なる水</div>
+        <div class="concept-text">
+            私たちは水でできています。しかし、時にその水は淀み、穢れることもあります。<br>
+            このツアーの始まりは、下鴨神社・糺の森。「ただす」という言葉には、不浄を清めるという意味もあり、昔の人々はこの森で身を清め（みそぎ）てから、町へ入って行ったのかもしれません。<br><br>
+            自然の中にはさまざまな水があります。<br>
+            外の世界では、動物や植物、空や海など自然界のあらゆるところに水が入り込んでいます。<br>
+            一方、御手洗池の湧き水は、私たちの中にある「内なる水」のつながりを感じさせてくれます。<br><br>
+            
+            <strong>「内なる水と外なる水をつなげて考えること」</strong><br>
+            生物多様性の保全や環境保護という外側の世界と、自分という内側の存在。<br>
+            その二つは、実は水でつながっている——。<br>
+            このツアーは、その感覚を取り戻すための旅です。
+        </div>
+    </div>
+
     <div class="lab-section">
         <h2>タイムライン & ルート</h2>
         
@@ -202,67 +286,149 @@ title: "Fukumoto Lab: 探究と教育の旅"
         </div>
 
         <h3>1月24日（土）詳細スケジュール案</h3>
+        <p style="font-size:0.85rem; color:#666; margin-bottom:15px;">※ 項目をクリックすると詳細が表示されます。</p>
+        
         <ul class="timeline-list lab-list">
-            <li><span class="time">08:15</span> <strong>鴨川デルタ</strong>（20分）<br>
-                <small>
-                ・集合：出町柳駅付近（調整中）<br>
-                ・イントロダクション、自己紹介<br>
-                ・川の合流点（デルタ）で、水と大気の流れを感じる
-                </small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">08:15</span> <strong>鴨川デルタ</strong>（20分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・集合：出町柳駅付近（調整中）<br>
+                        ・イントロダクション、自己紹介<br>
+                        ・川の合流点（デルタ）で、水と大気の流れを感じる
+                    </div>
+                </details>
             </li>
             
-            <li><span class="time">08:35</span> 移動（10分）<br>
-                <small>・徒歩 or ハイヤー（要下見確認）</small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">08:35</span> 移動（10分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・徒歩 or ハイヤー（要下見確認）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">08:45</span> <strong>下鴨神社・御手洗池</strong>（45分）<br>
-                <small>
-                ・神と水と人の暮らし、水とわたしたちのつながり<br>
-                ・御手洗池の湧き水と伝承
-                </small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">08:45</span> <strong>下鴨神社・御手洗池</strong>（45分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・神と水と人の暮らし、水とわたしたちのつながり<br>
+                        ・御手洗池の湧き水と伝承
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">09:30</span> 移動（20分）<br>
-                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">09:30</span> 移動（20分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・MKタクシーハイヤー（9人乗り×2）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">09:50</span> <strong>堤浅吉漆店</strong>（80分）<br>
-                <small>
-                ・漆にまつわる水の可変性や面白さを学ぶ<br>
-                ・見学：工房見学（30分）<br>
-                ・体験：漆塗りの体験など（30分）
-                </small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">09:50</span> <strong>堤浅吉漆店</strong>（80分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・漆にまつわる水の可変性や面白さを学ぶ<br>
+                        ・見学：工房見学（30分）<br>
+                        ・体験：漆塗りの体験など（30分）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">11:10</span> 移動（20分）<br>
-                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">11:10</span> 移動（20分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・MKタクシーハイヤー（9人乗り×2）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">11:30</span> <strong>京料理 二傳</strong>（90分）<br>
-                <small>
-                ・自然を模して一皿に描く京料理の感性<br>
-                ・体験：季節/風景をマイお弁当に入れて味わう（60分・予定）
-                </small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">11:30</span> <strong>京料理 二傳</strong>（90分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・自然を模して一皿に描く京料理の感性<br>
+                        ・体験：季節/風景をマイお弁当に入れて味わう（60分・予定）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">13:00</span> 移動（15分）<br>
-                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">13:00</span> 移動（15分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・MKタクシーハイヤー（9人乗り×2）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">13:15</span> <strong>弘道館</strong>（75分）<br>
-                <small>
-                ・13:15 イントロ（5分）<br>
-                ・13:20 探索（40分：庭と室内）<br>
-                ・14:00 浜崎さんお話（20分：見えてる部分と見えてない部分、表と裏）<br>
-                ・14:20 ふりかえり（10分）
-                </small>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">13:15</span> <strong>弘道館</strong>（75分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・13:15 イントロ（5分）<br>
+                        ・13:20 探索（40分：庭と室内）<br>
+                        ・14:00 浜崎さんお話（20分：見えてる部分と見えてない部分、表と裏）<br>
+                        ・14:20 ふりかえり（10分）
+                    </div>
+                </details>
             </li>
 
-            <li><span class="time">14:30</span> ツアー終了・休憩（30分）</li>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">14:30</span> ツアー終了・休憩（30分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・第1部終了
+                    </div>
+                </details>
+            </li>
 
-            <li><span class="time">15:00</span> <strong>ワークショップ</strong>（120分）</li>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">15:00</span> <strong>ワークショップ</strong>（120分）
+                    </summary>
+                    <div class="timeline-details">
+                        ・詳細プログラム設計中
+                    </div>
+                </details>
+            </li>
 
-            <li><span class="time">17:00</span> 終了・撤収</li>
+            <li>
+                <details>
+                    <summary>
+                        <span class="time">17:00</span> 終了・撤収
+                    </summary>
+                    <div class="timeline-details">
+                        ・解散
+                    </div>
+                </details>
+            </li>
         </ul>
     </div>
 
