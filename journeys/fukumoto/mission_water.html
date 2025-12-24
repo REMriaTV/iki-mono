@@ -1,0 +1,367 @@
+---
+layout: default
+title: "事前ワーク：見えない水を探せ！"
+---
+
+<style>
+    /* このページ専用のスタイル定義 */
+    :root {
+        --color-water: #00608d;
+        --color-water-light: #e0f7fa;
+        --color-accent: #fbc02d; /* 発見！感のある黄色 */
+        --font-serif: 'Shippori Mincho', serif;
+        --font-sans: 'Zen Kaku Gothic New', sans-serif;
+    }
+
+    .mission-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: var(--font-sans);
+        color: #333;
+    }
+
+    /* ヒーローセクション */
+    .mission-header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 40px 20px;
+        background: linear-gradient(180deg, #fff 0%, var(--color-water-light) 100%);
+        border-radius: 20px;
+    }
+
+    .mission-badge {
+        display: inline-block;
+        background: var(--color-water);
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        letter-spacing: 0.05em;
+    }
+
+    .mission-title {
+        font-family: var(--font-serif);
+        font-size: 2.2rem;
+        color: var(--color-water);
+        margin: 0 0 15px 0;
+        line-height: 1.3;
+    }
+
+    .mission-desc {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* ヒントカードエリア */
+    .hint-section {
+        margin-bottom: 60px;
+    }
+    
+    .section-title {
+        font-family: var(--font-serif);
+        font-size: 1.6rem;
+        color: var(--color-water);
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--color-accent);
+        margin: 10px auto 0;
+    }
+
+    .hint-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .hint-card {
+        background: #fff;
+        border: 2px solid #eee;
+        border-radius: 15px;
+        padding: 25px;
+        transition: transform 0.2s;
+    }
+    .hint-card:hover {
+        border-color: var(--color-water);
+        transform: translateY(-5px);
+    }
+
+    .hint-type {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+    .type-visible { color: #0288d1; }
+    .type-invisible { color: #7b1fa2; } /* 紫っぽい神秘的な色 */
+
+    .hint-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .hint-list li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+    .hint-list li::before {
+        content: "💧";
+        position: absolute;
+        left: 0;
+        font-size: 0.8em;
+    }
+
+    /* ギャラリーエリア */
+    .gallery-controls {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .filter-btn {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 8px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 0 5px;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+        background: var(--color-water);
+        color: #fff;
+        border-color: var(--color-water);
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .water-item {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        transition: transform 0.2s;
+    }
+    .water-item:hover {
+        transform: scale(1.02);
+    }
+
+    .item-img-box {
+        width: 100%;
+        aspect-ratio: 1/1; /* 正方形にトリミング */
+        background: #f5f5f5;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ccc;
+    }
+    .item-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .item-info {
+        padding: 15px;
+    }
+
+    .item-tag {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+    .tag-visible { background: #e1f5fe; color: #0288d1; }
+    .tag-invisible { background: #f3e5f5; color: #7b1fa2; }
+
+    .item-title {
+        font-weight: bold;
+        font-size: 1.05rem;
+        margin-bottom: 5px;
+        line-height: 1.4;
+        color: #333;
+    }
+    
+    .item-author {
+        font-size: 0.8rem;
+        color: #888;
+        text-align: right;
+    }
+
+    /* 投稿アクション */
+    .action-area {
+        margin-top: 80px;
+        text-align: center;
+        background: #fdfbf7;
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px dashed #ccc;
+    }
+    .btn-submit {
+        display: inline-block;
+        background: var(--color-accent);
+        color: #333;
+        font-weight: bold;
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        box-shadow: 0 4px 0 #f9a825;
+        transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .btn-submit:active {
+        transform: translateY(4px);
+        box-shadow: none;
+    }
+
+    @media (max-width: 600px) {
+        .mission-title { font-size: 1.6rem; }
+        .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .item-info { padding: 10px; }
+    }
+</style>
+
+<div class="mission-container">
+
+    <header class="mission-header">
+        <span class="mission-badge">Fukumoto Lab: 事前ワーク</span>
+        <h1 class="mission-title">家の中の<br>「見えない水」を探せ！</h1>
+        <p class="mission-desc">
+            1月24日のツアーに向けて、まずはみんなの家の中で「水探し」をしてみよう。<br>
+            水道の水だけが水じゃない？<br>
+            姿を変えて隠れている水を見つけて、報告してください。
+        </p>
+    </header>
+
+    <div class="hint-section">
+        <h2 class="section-title">どんな水を探せばいい？</h2>
+        <div class="hint-grid">
+            <div class="hint-card">
+                <span class="hint-type type-visible">見える水</span>
+                <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">みんながよく知っている、生活を支える水。</p>
+                <ul class="hint-list">
+                    <li>お風呂のシャワー</li>
+                    <li>キッチンの水道</li>
+                    <li>庭のホース</li>
+                    <li>雨上がりの水たまり</li>
+                </ul>
+            </div>
+            <div class="hint-card" style="border-color: var(--color-water-light); background: #faffff;">
+                <span class="hint-type type-invisible">見えない水（今回のターゲット！）</span>
+                <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">形を変えて、モノや生き物の中に隠れている水。</p>
+                <ul class="hint-list">
+                    <li>みかんを剥いた時のしぶき（植物の中の水）</li>
+                    <li>お鍋から出る白い湯気（気体になった水）</li>
+                    <li>窓ガラスの結露（空気中の水）</li>
+                    <li>転んだ時の血（体の中の水）</li>
+                    <li>ぷるぷるのゼリー（お菓子の中の水）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">みんなの「水」ギャラリー</div>
+    
+    <div class="gallery-controls">
+        <button class="filter-btn active" onclick="filterGallery('all')">ぜんぶ</button>
+        <button class="filter-btn" onclick="filterGallery('visible')">見える水</button>
+        <button class="filter-btn" onclick="filterGallery('invisible')">見えない水</button>
+    </div>
+
+    <div class="gallery-grid" id="waterGallery">
+        
+        <div class="water-item" data-type="invisible">
+            <div class="item-img-box">
+                <span style="font-size:3rem;">🥦</span>
+            </div>
+            <div class="item-info">
+                <span class="item-tag tag-invisible">見えない水</span>
+                <div class="item-title">パリパリのレタス</div>
+                <div class="item-author">by あかり</div>
+            </div>
+        </div>
+
+        <div class="water-item" data-type="invisible">
+            <div class="item-img-box">
+                <span style="font-size:3rem;">♨️</span>
+            </div>
+            <div class="item-info">
+                <span class="item-tag tag-invisible">見えない水</span>
+                <div class="item-title">熱いお茶のゆげ</div>
+                <div class="item-author">by ケンタ</div>
+            </div>
+        </div>
+
+        <div class="water-item" data-type="visible">
+            <div class="item-img-box">
+                <span style="font-size:3rem;">🚰</span>
+            </div>
+            <div class="item-info">
+                <span class="item-tag tag-visible">見える水</span>
+                <div class="item-title">公園の水道</div>
+                <div class="item-author">by サトシ</div>
+            </div>
+        </div>
+
+        <div class="water-item" data-type="invisible">
+            <div class="item-img-box">
+                <span style="font-size:3rem;">🎨</span>
+            </div>
+            <div class="item-info">
+                <span class="item-tag tag-invisible">見えない水</span>
+                <div class="item-title">固まる前の粘土</div>
+                <div class="item-author">by Staff</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-area">
+        <h3>君も見つけた？</h3>
+        <p>家の中や近所で「水」を見つけたら、写真を撮って送ってね。<br>絵を描いて写真に撮ってもOK！</p>
+        
+        <a href="【ここにGoogleフォームのURL】" target="_blank" class="btn-submit">発見を報告する！</a>
+    </div>
+
+</div>
+
+<script>
+    // ギャラリーのフィルタリング機能
+    function filterGallery(type) {
+        const items = document.querySelectorAll('.water-item');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        // ボタンのアクティブ切り替え
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        items.forEach(item => {
+            if (type === 'all' || item.getAttribute('data-type') === type) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
