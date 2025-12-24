@@ -74,7 +74,36 @@ title: "Fukumoto Lab: 探究と教育の旅"
         color: #ccc;
     }
 
-    /* タイムライン */
+    /* タイムライン概要用のスタイル (New!) */
+    .schedule-summary {
+        background-color: #f0f8ff;
+        border-left: 5px solid #00608d;
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        border-radius: 0 4px 4px 0;
+    }
+    .summary-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+    .summary-row:last-child {
+        margin-bottom: 0;
+    }
+    .summary-time {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        color: #00608d;
+        margin-right: 15px;
+        min-width: 125px;
+    }
+    .summary-label {
+        font-weight: bold;
+        color: #333;
+        font-size: 1.05rem;
+    }
+
+    /* タイムライン詳細 */
     .timeline-list li {
         margin-bottom: 12px;
         padding-left: 0;
@@ -160,24 +189,43 @@ title: "Fukumoto Lab: 探究と教育の旅"
 
     <div class="lab-section">
         <h2>タイムライン & ルート</h2>
-        <p><strong>08:15 - 17:00</strong></p>
         
+        <div class="schedule-summary">
+            <div class="summary-row">
+                <span class="summary-time">08:15 - 14:30</span>
+                <span class="summary-label">第1部：探究ツアー</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-time">15:00 - 17:00</span>
+                <span class="summary-label">第2部：ワークショップ</span>
+            </div>
+        </div>
+
         <h3>1月24日（土）詳細スケジュール案</h3>
         <ul class="timeline-list lab-list">
-            <li><span class="time">08:15</span> <strong>集合・鴨川探索</strong>（20分）｜集合：出町柳駅付近（調整中）<br>
+            <li><span class="time">08:15</span> <strong>鴨川デルタ</strong>（20分）<br>
                 <small>
+                ・集合：出町柳駅付近（調整中）<br>
                 ・イントロダクション、自己紹介<br>
                 ・川の合流点（デルタ）で、水と大気の流れを感じる
                 </small>
             </li>
-            <li><span class="time">08:35</span> 移動（10分）｜※徒歩 or ハイヤー（要下見確認）</li>
+            
+            <li><span class="time">08:35</span> 移動（10分）<br>
+                <small>・徒歩 or ハイヤー（要下見確認）</small>
+            </li>
+
             <li><span class="time">08:45</span> <strong>下鴨神社・御手洗池</strong>（45分）<br>
                 <small>
                 ・神と水と人の暮らし、水とわたしたちのつながり<br>
                 ・御手洗池の湧き水と伝承
                 </small>
             </li>
-            <li><span class="time">09:30</span> 移動（20分）｜MKタクシーハイヤー（9人乗り×2）</li>
+
+            <li><span class="time">09:30</span> 移動（20分）<br>
+                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            </li>
+
             <li><span class="time">09:50</span> <strong>堤浅吉漆店</strong>（80分）<br>
                 <small>
                 ・漆にまつわる水の可変性や面白さを学ぶ<br>
@@ -185,24 +233,35 @@ title: "Fukumoto Lab: 探究と教育の旅"
                 ・体験：漆塗りの体験など（30分）
                 </small>
             </li>
-            <li><span class="time">11:10</span> 移動（20分）｜MKタクシーハイヤー（9人乗り×2）</li>
+
+            <li><span class="time">11:10</span> 移動（20分）<br>
+                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            </li>
+
             <li><span class="time">11:30</span> <strong>京料理 二傳</strong>（90分）<br>
                 <small>
                 ・自然を模して一皿に描く京料理の感性<br>
                 ・体験：季節/風景をマイお弁当に入れて味わう（60分・予定）
                 </small>
             </li>
-            <li><span class="time">13:00</span> 移動（15分）｜MKタクシーハイヤー（9人乗り×2）</li>
-            <li><span class="time">13:15</span> <strong>弘道館</strong> 到着（75分）<br>
+
+            <li><span class="time">13:00</span> 移動（15分）<br>
+                <small>・MKタクシーハイヤー（9人乗り×2）</small>
+            </li>
+
+            <li><span class="time">13:15</span> <strong>弘道館</strong>（75分）<br>
                 <small>
-                ・13:15 到着、イントロ（5分）<br>
+                ・13:15 イントロ（5分）<br>
                 ・13:20 探索（40分：庭と室内）<br>
                 ・14:00 浜崎さんお話（20分：見えてる部分と見えてない部分、表と裏）<br>
                 ・14:20 ふりかえり（10分）
                 </small>
             </li>
+
             <li><span class="time">14:30</span> ツアー終了・休憩（30分）</li>
-            <li><span class="time">15:00</span> <strong>ワークショップ開始</strong>（120分）</li>
+
+            <li><span class="time">15:00</span> <strong>ワークショップ</strong>（120分）</li>
+
             <li><span class="time">17:00</span> 終了・撤収</li>
         </ul>
     </div>
